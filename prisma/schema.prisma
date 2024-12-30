@@ -1,0 +1,203 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated-store"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  orders    Order[]
+  cart      Cart?
+  wishlist  Wishlist?
+  logs      Log[]
+  addresses Address[]
+  reviews   Review[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  VENDOR
+}
+
+model Address {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  address1   String
+  address2   String?
+  city       String
+  state      String
+  postalCode String
+  country    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  Order      Order[]
+}
+
+model Category {
+  id          Int                 @id @default(autoincrement())
+  name        String              @unique
+  description String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  // Relationships
+  descendants CategoryHierarchy[] @relation("AncestorRelation")
+  ancestors   CategoryHierarchy[] @relation("DescendantRelation")
+  Product     Product[]
+}
+
+model CategoryHierarchy {
+  id           Int      @id @default(autoincrement())
+  ancestorId   Int
+  descendantId Int
+  depth        Int
+  // Relationships
+  ancestor     Category @relation("AncestorRelation", fields: [ancestorId], references: [id])
+  descendant   Category @relation("DescendantRelation", fields: [descendantId], references: [id])
+
+  @@unique([ancestorId, descendantId]) // Ensures no duplicate relationships
+}
+
+model Product {
+  id            Int                @id @default(autoincrement())
+  name          String
+  description   String?
+  price         Float
+  categoryId    Int
+  category      Category           @relation(fields: [categoryId], references: [id])
+  attributes    ProductAttribute[]
+  images        ProductImage[]
+  stock         Int                @default(0)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  orderItems    OrderItem[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  reviews       Review[]
+}
+
+model ProductAttribute {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  key       String
+  value     String
+  createdAt DateTime @default(now())
+}
+
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  isPrimary Boolean  @default(false)
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  rating    Int      @default(1)
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id                Int         @id @default(autoincrement())
+  userId            Int
+  user              User        @relation(fields: [userId], references: [id])
+  status            OrderStatus
+  items             OrderItem[]
+  totalAmount       Float
+  shippingAddressId Int?
+  shippingAddress   Address?    @relation(fields: [shippingAddressId], references: [id])
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float
+  createdAt DateTime @default(now())
+}
+
+model Cart {
+  id        Int        @id @default(autoincrement())
+  userId    Int        @unique
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  cartId    Int
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+}
+
+model Wishlist {
+  id        Int            @id @default(autoincrement())
+  userId    Int            @unique
+  user      User           @relation(fields: [userId], references: [id])
+  items     WishlistItem[]
+  createdAt DateTime       @default(now())
+}
+
+model WishlistItem {
+  id         Int      @id @default(autoincrement())
+  wishlistId Int
+  wishlist   Wishlist @relation(fields: [wishlistId], references: [id])
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  level     LogLevel
+  message   String
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  context   Json?
+  createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+  SHIPPED
+  DELIVERED
+  RETURNED
+}
+
+enum LogLevel {
+  INFO
+  WARN
+  ERROR
+  DEBUG
+}

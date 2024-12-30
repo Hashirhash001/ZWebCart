@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated-central"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("CENTRAL_DATABASE_URL") // Central DB connection
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  stores    Store[] // User's associated stores
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Log       Log[]
+}
+
+model Store {
+  id        Int      @id @default(autoincrement())
+  name      String
+  dbName    String   @unique
+  dbUrl     String   @unique
+  ownerId   Int
+  owner     User     @relation(fields: [ownerId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  level     LogLevel
+  message   String
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  context   Json?
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum LogLevel {
+  INFO
+  WARN
+  ERROR
+  DEBUG
+}
