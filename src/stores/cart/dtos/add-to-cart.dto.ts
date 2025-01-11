@@ -1,11 +1,17 @@
-import { IsInt, IsPositive, Min } from 'class-validator';
+import { IsInt, IsNotEmpty, IsPositive, IsString } from 'class-validator';
 
 export class AddToCartDto {
-  @IsInt()
-  @IsPositive()
+  @IsNotEmpty()
+  @IsString()
+  storeId: string;
+
+  @IsNotEmpty()
+  @IsInt({ message: 'productId must be an integer number' })
+  @IsPositive({ message: 'productId must be a positive number' })
   productId: number;
 
-  @IsInt()
-  @Min(1)
+  @IsNotEmpty()
+  @IsInt({ message: 'quantity must be an integer number' })
+  @IsPositive({ message: 'quantity must not be less than 1' })
   quantity: number;
 }

@@ -19,4 +19,9 @@ import { PrismaCentralService } from 'src/prisma/prisma-central.service';
   controllers: [AuthController],
   providers: [AuthService, PrismaDynamicService, PrismaCentralService],
 })
-export class AuthModule {}
+export class AuthModule {
+  constructor() {
+    // Log the JWT_SECRET to verify if it's correctly loaded
+    console.log('JWT_SECRET:', process.env.JWT_SECRET);
+  }
+}

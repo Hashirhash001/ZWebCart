@@ -39,7 +39,9 @@ export class AdminGuard implements CanActivate {
       //   throw new ForbiddenException('Unauthorized access');
       // }
 
-      const storeId = decoded.stores?.[0]?.id; // Extract the first store's ID
+      const storeId = decoded.store?.id; // Extract the first store's ID
+
+      // console.log('Extracted Store ID:', storeId); // Debugging log
 
       if (!storeId) {
         throw new ForbiddenException('Store ID is missing in the token');

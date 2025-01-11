@@ -9,35 +9,39 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
   password  String
-  role      Role     @default(USER)
+  role      Role      @default(USER)
   stores    Store[] // User's associated stores
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
   Log       Log[]
 }
 
 model Store {
-  id        Int      @id @default(autoincrement())
+  id        String    @id @default(uuid())
   name      String
-  dbName    String   @unique
-  dbUrl     String   @unique
-  ownerId   Int
-  owner     User     @relation(fields: [ownerId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  dbName    String    @unique
+  dbUrl     String    @unique
+  ownerId   String
+  owner     User      @relation(fields: [ownerId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model Log {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   level     LogLevel
   message   String
-  userId    Int?
-  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  user      User?     @relation(fields: [userId], references: [id])
   context   Json?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 enum Role {

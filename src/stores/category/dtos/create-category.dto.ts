@@ -25,12 +25,12 @@ export class NoVariablePattern implements ValidatorConstraintInterface {
 export class CreateCategoryDto {
   @IsNotEmpty()
   @IsString()
-  @Validate(NoVariablePattern) // Apply the custom validator
+  // @Validate(NoVariablePattern) // Apply the custom validator
   name: string;
 
   @IsOptional()
   @IsString()
-  @Validate(NoVariablePattern) // Apply the custom validator
+  // @Validate(NoVariablePattern) // Apply the custom validator
   description?: string;
 
   @IsOptional()

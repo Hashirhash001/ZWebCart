@@ -3,6 +3,8 @@ import {
   NotFoundException,
   BadRequestException,
   InternalServerErrorException,
+  UnauthorizedException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { PrismaDynamicService } from '../../prisma/prisma.service';
 import { PrismaCentralService } from '../../prisma/prisma-central.service';
@@ -118,9 +120,15 @@ export class ProductsService {
       };
     } catch (error) {
       console.error('Error creating product:', error);
-      throw new InternalServerErrorException(
-        error.message || 'Error creating product',
-      );
+      // Preserve original exceptions
+      if (
+        error instanceof BadRequestException ||
+        error instanceof NotFoundException ||
+        error instanceof UnauthorizedException ||
+        error instanceof ForbiddenException
+      ) {
+        throw error;
+      }
     }
   }
 
@@ -337,7 +345,7 @@ export class ProductsService {
           data: null,
         };
       }
-  
+
       const product = await client.product.findUnique({
         where: { id: parsedId },
       });
@@ -348,21 +356,21 @@ export class ProductsService {
           data: null,
         };
       }
-  
+
       // Delete related records first (cascade delete manually)
       await client.productAttribute.deleteMany({
         where: { productId: parsedId },
       });
-  
+
       await client.productImage.deleteMany({
         where: { productId: parsedId },
       });
-  
+
       // Now delete the product
       await client.product.delete({
         where: { id: parsedId },
       });
-  
+
       return {
         success: true,
         message: 'Product deleted successfully',
@@ -375,5 +383,134 @@ export class ProductsService {
       );
     }
   }
-  
+
+  async filterProductsByCategory(storeDbUrl: string, categoryId: string) {
+    const client = this.prismaStore.getClient(storeDbUrl);
+
+    try {
+      const parsedCategoryId = parseInt(categoryId, 10);
+      if (isNaN(parsedCategoryId)) {
+        throw new BadRequestException('Invalid category ID');
+      }
+
+      // Validate the category exists
+      const category = await client.category.findUnique({
+        where: { id: parsedCategoryId },
+      });
+      if (!category) {
+        throw new NotFoundException('Category not found');
+      }
+
+      // Get all descendant categories including the given category
+      const descendantCategories = await client.categoryHierarchy.findMany({
+        where: { ancestorId: parsedCategoryId },
+        select: { descendantId: true },
+      });
+
+      const categoryIds = [
+        parsedCategoryId, // Include the root category
+        ...descendantCategories.map((item) => item.descendantId),
+      ];
+
+      // Filter products by these category IDs
+      const products = await client.product.findMany({
+        where: {
+          categoryId: { in: categoryIds },
+        },
+        include: {
+          attributes: true, // Include product attributes
+          images: true, // Include product images
+        },
+      });
+
+      if (!products.length) {
+        return {
+          success: false,
+          message: 'No products found for the selected category',
+          data: null,
+        };
+      }
+
+      return {
+        success: true,
+        message: 'Products fetched successfully',
+        data: products,
+      };
+    } catch (error) {
+      console.error('Error filtering products by category:', error);
+      throw new InternalServerErrorException(
+        error.message || 'Error filtering products',
+      );
+    }
+  }
+
+  // Filter Products by Price and Attributes
+  async filterProductsByPriceAndAttributes(
+    storeDbUrl: string,
+    minPrice: number | null,
+    maxPrice: number | null,
+    attributes: Record<string, string> = {},
+  ) {
+    const client = this.prismaStore.getClient(storeDbUrl);
+
+    try {
+      // Ensure attributes is an object
+      if (typeof attributes !== 'object' || attributes === null) {
+        attributes = {}; // Default to an empty object
+      }
+
+      // Build the Prisma query `where` object
+      const where: any = {};
+
+      // Add price filters if minPrice or maxPrice are provided
+      if (minPrice !== null) {
+        where.price = { gte: minPrice };
+      }
+      if (maxPrice !== null) {
+        where.price = { ...where.price, lte: maxPrice };
+      }
+
+      // Add attribute filters only if attributes is not empty
+      if (Object.keys(attributes).length > 0) {
+        where.AND = Object.entries(attributes).map(([key, value]) => ({
+          attributes: {
+            some: {
+              key: key,
+              value: value,
+            },
+          },
+        }));
+      }
+
+      // Fetch products with the conditions
+      const products = await client.product.findMany({
+        where,
+        include: {
+          attributes: true, // Include attributes
+          images: true, // Include images
+        },
+      });
+
+      // Return response if no products are found
+      if (products.length === 0) {
+        return {
+          success: false,
+          message: 'No products found with the given filters',
+          data: null,
+        };
+      }
+
+      // Return the filtered products
+      return {
+        success: true,
+        message: 'Products fetched successfully',
+        data: products,
+      };
+    } catch (error) {
+      console.error('Error filtering products by price and attributes:', error);
+      throw new InternalServerErrorException(
+        error.message || 'Error filtering products',
+      );
+    }
+  }
 }

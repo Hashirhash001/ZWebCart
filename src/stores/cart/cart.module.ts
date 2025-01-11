@@ -6,7 +6,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { PrismaCentralService } from 'src/prisma/prisma-central.service';
 
 @Module({
-  imports: [JwtModule],
+  imports: [
+    JwtModule.register({
+      secret: process.env.JWT_SECRET, // Ensure this is the same secret as in AuthModule
+      signOptions: { expiresIn: '10h' }, // Token expiry, ensure consistency
+    }),
+  ],
   controllers: [CartController],
   providers: [CartService, PrismaDynamicService, PrismaCentralService],
 })

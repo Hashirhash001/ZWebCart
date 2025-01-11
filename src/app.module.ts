@@ -7,6 +7,7 @@ import { ProductsModule } from './stores/products/products.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { CartModule } from './stores/cart/cart.module';
+import { WishlistModule } from './stores/wishlist/wishlist.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CartModule } from './stores/cart/cart.module';
       serveRoot: '/uploads', // URL prefix to access the images
     }),
     CartModule,
+    WishlistModule,
   ],
   controllers: [],
   providers: [],

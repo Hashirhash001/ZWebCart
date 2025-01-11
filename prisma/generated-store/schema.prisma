@@ -8,6 +8,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model StoreSettings {
+  id        Int      @id @default(autoincrement())
+  storeId   String   @unique // Referencing Store in the central schema
+  storeName String
+  currency  String? // Example field for default currency
+  timezone  String? // Example field for store timezone
+  logoUrl   String? // Example field for store logo
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
@@ -15,6 +26,7 @@ model User {
   role      Role      @default(USER)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
   orders    Order[]
   cart      Cart?
   wishlist  Wishlist?
@@ -30,17 +42,18 @@ enum Role {
 }
 
 model Address {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   userId     Int
-  user       User     @relation(fields: [userId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
   address1   String
   address2   String?
   city       String
   state      String
   postalCode String
   country    String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime? // Soft delete field
   Order      Order[]
 }
 
@@ -50,6 +63,7 @@ model Category {
   description String?
   createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
+  deletedAt   DateTime? // Soft delete field
   // Relationships
   descendants CategoryHierarchy[] @relation("AncestorRelation")
   ancestors   CategoryHierarchy[] @relation("DescendantRelation")
@@ -80,6 +94,7 @@ model Product {
   stock         Int                @default(0)
   createdAt     DateTime           @default(now())
   updatedAt     DateTime           @updatedAt
+  deletedAt     DateTime? // Soft delete field
   orderItems    OrderItem[]
   cartItems     CartItem[]
   wishlistItems WishlistItem[]
@@ -87,33 +102,38 @@ model Product {
 }
 
 model ProductAttribute {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product   @relation(fields: [productId], references: [id])
   key       String
   value     String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model ProductImage {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   url       String
-  isPrimary Boolean  @default(false)
+  isPrimary Boolean   @default(false)
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
-  createdAt DateTime @default(now())
+  product   Product   @relation(fields: [productId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model Review {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
-  rating    Int      @default(1)
+  product   Product   @relation(fields: [productId], references: [id])
+  rating    Int       @default(1)
   comment   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model Order {
@@ -127,17 +147,20 @@ model Order {
   shippingAddress   Address?    @relation(fields: [shippingAddressId], references: [id])
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
+  deletedAt         DateTime? // Soft delete field
 }
 
 model OrderItem {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   orderId   Int
-  order     Order    @relation(fields: [orderId], references: [id])
+  order     Order     @relation(fields: [orderId], references: [id])
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product   @relation(fields: [productId], references: [id])
   quantity  Int
   price     Float
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model Cart {
@@ -147,16 +170,19 @@ model Cart {
   items     CartItem[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model CartItem {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   cartId    Int
-  cart      Cart     @relation(fields: [cartId], references: [id])
+  cart      Cart      @relation(fields: [cartId], references: [id])
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
-  quantity  Int      @default(1)
-  createdAt DateTime @default(now())
+  product   Product   @relation(fields: [productId], references: [id])
+  quantity  Int       @default(1)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model Wishlist {
@@ -165,25 +191,31 @@ model Wishlist {
   user      User           @relation(fields: [userId], references: [id])
   items     WishlistItem[]
   createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 model WishlistItem {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   wishlistId Int
-  wishlist   Wishlist @relation(fields: [wishlistId], references: [id])
+  wishlist   Wishlist  @relation(fields: [wishlistId], references: [id])
   productId  Int
-  product    Product  @relation(fields: [productId], references: [id])
-  createdAt  DateTime @default(now())
+  product    Product   @relation(fields: [productId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime? // Soft delete field
 }
 
 model Log {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   level     LogLevel
   message   String
   userId    Int?
-  user      User?    @relation(fields: [userId], references: [id])
+  user      User?     @relation(fields: [userId], references: [id])
   context   Json?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? // Soft delete field
 }
 
 enum OrderStatus {

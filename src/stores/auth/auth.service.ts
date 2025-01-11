@@ -17,7 +17,7 @@ export class AuthService {
 
   private async getDatabaseUrl(storeId: string): Promise<string> {
     const store = await this.prismaCentral.store.findUnique({
-      where: { id: Number(storeId) },
+      where: { id: String(storeId) },
     });
 
     if (!store) {

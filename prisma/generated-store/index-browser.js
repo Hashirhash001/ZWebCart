@@ -117,13 +117,25 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.StoreSettingsScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  storeName: 'storeName',
+  currency: 'currency',
+  timezone: 'timezone',
+  logoUrl: 'logoUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
   role: 'role',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.AddressScalarFieldEnum = {
@@ -136,7 +148,8 @@ exports.Prisma.AddressScalarFieldEnum = {
   postalCode: 'postalCode',
   country: 'country',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -144,7 +157,8 @@ exports.Prisma.CategoryScalarFieldEnum = {
   name: 'name',
   description: 'description',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.CategoryHierarchyScalarFieldEnum = {
@@ -162,7 +176,8 @@ exports.Prisma.ProductScalarFieldEnum = {
   categoryId: 'categoryId',
   stock: 'stock',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.ProductAttributeScalarFieldEnum = {
@@ -170,7 +185,9 @@ exports.Prisma.ProductAttributeScalarFieldEnum = {
   productId: 'productId',
   key: 'key',
   value: 'value',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.ProductImageScalarFieldEnum = {
@@ -178,7 +195,9 @@ exports.Prisma.ProductImageScalarFieldEnum = {
   url: 'url',
   isPrimary: 'isPrimary',
   productId: 'productId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
@@ -188,7 +207,8 @@ exports.Prisma.ReviewScalarFieldEnum = {
   rating: 'rating',
   comment: 'comment',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
@@ -198,7 +218,8 @@ exports.Prisma.OrderScalarFieldEnum = {
   totalAmount: 'totalAmount',
   shippingAddressId: 'shippingAddressId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.OrderItemScalarFieldEnum = {
@@ -207,14 +228,17 @@ exports.Prisma.OrderItemScalarFieldEnum = {
   productId: 'productId',
   quantity: 'quantity',
   price: 'price',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.CartScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.CartItemScalarFieldEnum = {
@@ -222,20 +246,26 @@ exports.Prisma.CartItemScalarFieldEnum = {
   cartId: 'cartId',
   productId: 'productId',
   quantity: 'quantity',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.WishlistScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.WishlistItemScalarFieldEnum = {
   id: 'id',
   wishlistId: 'wishlistId',
   productId: 'productId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.LogScalarFieldEnum = {
@@ -244,7 +274,9 @@ exports.Prisma.LogScalarFieldEnum = {
   message: 'message',
   userId: 'userId',
   context: 'context',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -295,6 +327,7 @@ exports.LogLevel = exports.$Enums.LogLevel = {
 };
 
 exports.Prisma.ModelName = {
+  StoreSettings: 'StoreSettings',
   User: 'User',
   Address: 'Address',
   Category: 'Category',

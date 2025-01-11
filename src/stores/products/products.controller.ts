@@ -12,6 +12,7 @@ import {
   NotFoundException,
   UseInterceptors,
   UploadedFiles,
+  Query,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ProductsService } from './products.service';
@@ -22,6 +23,8 @@ import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { Request } from 'express';
 import { diskStorage } from 'multer';
+import { FrontStoreGuard } from '../guards/frontStore.guard';
+import { FilterProductDto } from './dtos/filter-product.dto';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit per file
 const MAX_FILE_COUNT = 10; // Limit to 10 files
@@ -130,14 +133,14 @@ export class ProductsController {
   }
 
   @Get('/all')
-  @UseGuards(AdminGuard)
+  @UseGuards(FrontStoreGuard)
   async getAllProducts(@Req() request: Request) {
     const storeDbUrl = request['storeDbUrl'];
     return this.productsService.getProducts(storeDbUrl);
   }
 
   @Get(':id')
-  @UseGuards(AdminGuard)
+  @UseGuards(FrontStoreGuard)
   async getProduct(@Req() request: Request, @Param('id') id: string) {
     const storeDbUrl = request['storeDbUrl'];
     return this.productsService.getProduct(storeDbUrl, id);
@@ -149,4 +152,29 @@ export class ProductsController {
     const storeDbUrl = request['storeDbUrl'];
     return this.productsService.deleteProduct(storeDbUrl, id);
   }
+
+  //frontend
+  @Get('/filter-by-category/:categoryId')
+  @UseGuards(FrontStoreGuard)
+  async fetchProductsByCategory(
+    @Req() request: Request,
+    @Param('categoryId') categoryId: string,
+  ) {
+    const storeDbUrl = request['storeDbUrl'];
+    return this.productsService.filterProductsByCategory(storeDbUrl, categoryId);
+  }
+
+  @Post('/filter')
+  @UseGuards(FrontStoreGuard)
+  async filterProducts(
+    @Body() filterDto: FilterProductDto,  // Use @Body to fetch data from request body
+    @Req() request: Request,
+  ) {
+    const { minPrice, maxPrice, attributes } = filterDto;
+
+    const storeDbUrl = request['storeDbUrl'];
+
+    return this.productsService.filterProductsByPriceAndAttributes(storeDbUrl, minPrice, maxPrice, attributes);
+  }
+
 }
