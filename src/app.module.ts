@@ -8,6 +8,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { CartModule } from './stores/cart/cart.module';
 import { WishlistModule } from './stores/wishlist/wishlist.module';
+import { CollectionsModule } from './stores/collections/collections.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { WishlistModule } from './stores/wishlist/wishlist.module';
     }),
     CartModule,
     WishlistModule,
+    CollectionsModule
   ],
   controllers: [],
   providers: [],

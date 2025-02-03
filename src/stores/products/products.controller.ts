@@ -69,11 +69,67 @@ export class ProductsController {
     return transformedDto;
   }
 
-  private parseAttributes(body: any): void {
+  private parseAndValidateBody(body: any): void {
+    // Convert numeric fields from string to number
+    if (typeof body.price === 'string') {
+      const parsedPrice = Number(body.price.replace(/,/g, ''));
+      if (isNaN(parsedPrice)) {
+        throw new BadRequestException('Invalid format: price must be a number');
+      }
+      body.price = parsedPrice;
+    }
+
+    if (typeof body.comparePrice === 'string') {
+      const parsedComparePrice = Number(body.comparePrice.replace(/,/g, ''));
+      if (isNaN(parsedComparePrice)) {
+        throw new BadRequestException(
+          'Invalid format: comparePrice must be a number',
+        );
+      }
+      body.comparePrice = parsedComparePrice;
+    }
+  
+    if (typeof body.categoryId === 'string') {
+      const parsedCategoryId = Number(body.categoryId);
+      if (isNaN(parsedCategoryId)) {
+        throw new BadRequestException('Invalid format: categoryId must be a number');
+      }
+      body.categoryId = parsedCategoryId;
+    }
+  
+    if (typeof body.stock === 'string') {
+      const parsedStock = Number(body.stock);
+      if (isNaN(parsedStock)) {
+        throw new BadRequestException('Invalid format: stock must be a number');
+      }
+      body.stock = parsedStock;
+    }
+  
+    // Convert attributes string to JSON and validate
     if (typeof body.attributes === 'string') {
       try {
-        body.attributes = JSON.parse(body.attributes);
-      } catch {
+        const parsedAttributes = JSON.parse(body.attributes);
+  
+        if (!Array.isArray(parsedAttributes)) {
+          throw new BadRequestException('Attributes must be an array of objects');
+        }
+  
+        parsedAttributes.forEach((attr, index) => {
+          if (
+            typeof attr !== 'object' ||
+            !attr.hasOwnProperty('key') ||
+            !attr.hasOwnProperty('value') ||
+            typeof attr.key !== 'string' ||
+            typeof attr.value !== 'string'
+          ) {
+            throw new BadRequestException(
+              `Invalid attribute format at index ${index}. Each attribute must have "key" and "value" as strings.`,
+            );
+          }
+        });
+  
+        body.attributes = parsedAttributes;
+      } catch (error) {
         throw new BadRequestException('Invalid JSON format for attributes');
       }
     }
@@ -87,16 +143,18 @@ export class ProductsController {
     @Body() body: any,
     @UploadedFiles() files: File[],
   ) {
-    this.parseAttributes(body);
-    const createProductDto = await this.validateDto(CreateProductDto, body);
+    if (!body) {
+      throw new BadRequestException('Request body is missing');
+    }
 
+    this.parseAndValidateBody(body);
+    const createProductDto = await this.validateDto(CreateProductDto, body);
     if (!files || files.length === 0) {
       throw new BadRequestException('No images provided');
     }
 
-    const storeDbUrl = request['storeDbUrl'];
     return this.productsService.createProduct(
-      storeDbUrl,
+      request['storeDbUrl'],
       createProductDto,
       files,
     );
@@ -116,7 +174,7 @@ export class ProductsController {
       throw new BadRequestException('Invalid product ID');
     }
 
-    this.parseAttributes(body);
+    this.parseAndValidateBody(body);
     const updateProductDto = await this.validateDto(UpdateProductDto, body);
 
     if (!files || files.length === 0) {
@@ -161,20 +219,27 @@ export class ProductsController {
     @Param('categoryId') categoryId: string,
   ) {
     const storeDbUrl = request['storeDbUrl'];
-    return this.productsService.filterProductsByCategory(storeDbUrl, categoryId);
+    return this.productsService.filterProductsByCategory(
+      storeDbUrl,
+      categoryId,
+    );
   }
 
   @Post('/filter')
   @UseGuards(FrontStoreGuard)
   async filterProducts(
-    @Body() filterDto: FilterProductDto,  // Use @Body to fetch data from request body
+    @Body() filterDto: FilterProductDto, // Use @Body to fetch data from request body
     @Req() request: Request,
   ) {
     const { minPrice, maxPrice, attributes } = filterDto;
 
     const storeDbUrl = request['storeDbUrl'];
 
-    return this.productsService.filterProductsByPriceAndAttributes(storeDbUrl, minPrice, maxPrice, attributes);
+    return this.productsService.filterProductsByPriceAndAttributes(
+      storeDbUrl,
+      minPrice,
+      maxPrice,
+      attributes,
+    );
   }
-
 }

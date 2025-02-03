@@ -34,6 +34,9 @@ export class ProductsService {
       const parsedPrice = parseFloat(
         createProductDto.price as unknown as string,
       ); // Ensures it's a float
+      const parsedComparePrice = createProductDto.comparePrice
+      ? parseFloat(createProductDto.comparePrice.toString())
+      : null; // Optional field, parsed only if provided
       const parsedStock = parseInt(createProductDto.stock.toString(), 10);
 
       if (isNaN(parsedPrice) || isNaN(parsedStock)) {
@@ -63,6 +66,7 @@ export class ProductsService {
           name: createProductDto.name,
           description: createProductDto.description,
           price: parsedPrice, // Use parsed price
+          comparePrice: parsedComparePrice, // Use parsed comparePrice
           categoryId: parsedCategoryId,
           stock: parsedStock, // Use parsed stock
         },
@@ -169,6 +173,8 @@ export class ProductsService {
           description:
             updateProductDto.description ?? existingProduct.description,
           price: updateProductDto.price ?? existingProduct.price,
+          comparePrice:
+            updateProductDto.comparePrice ?? existingProduct.comparePrice,
           stock: updateProductDto.stock ?? existingProduct.stock,
           categoryId: updateProductDto.categoryId ?? existingProduct.categoryId,
         },

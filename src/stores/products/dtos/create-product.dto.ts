@@ -7,6 +7,7 @@ import {
   ArrayMinSize,
   IsArray,
   IsObject,
+  IsOptional
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -34,6 +35,12 @@ export class CreateProductDto {
   @Type(() => Number)
   @IsPositive()
   price: number;
+
+  @IsOptional()  // Make it optional, you can omit if no comparePrice is provided
+  @IsNumber()
+  @Type(() => Number)
+  @IsPositive()
+  comparePrice?: number;
 
   @IsNotEmpty()
   @IsNumber()

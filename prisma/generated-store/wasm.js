@@ -173,6 +173,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   name: 'name',
   description: 'description',
   price: 'price',
+  comparePrice: 'comparePrice',
   categoryId: 'categoryId',
   stock: 'stock',
   createdAt: 'createdAt',
@@ -268,6 +269,20 @@ exports.Prisma.WishlistItemScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
+exports.Prisma.CollectionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CollectionProductScalarFieldEnum = {
+  id: 'id',
+  collectionId: 'collectionId',
+  productId: 'productId'
+};
+
 exports.Prisma.LogScalarFieldEnum = {
   id: 'id',
   level: 'level',
@@ -342,6 +357,8 @@ exports.Prisma.ModelName = {
   CartItem: 'CartItem',
   Wishlist: 'Wishlist',
   WishlistItem: 'WishlistItem',
+  Collection: 'Collection',
+  CollectionProduct: 'CollectionProduct',
   Log: 'Log'
 };
 

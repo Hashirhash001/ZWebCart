@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./generated-store"
+  provider      = "prisma-client-js"
+  output        = "./generated-store"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -83,22 +84,24 @@ model CategoryHierarchy {
 }
 
 model Product {
-  id            Int                @id @default(autoincrement())
-  name          String
-  description   String?
-  price         Float
-  categoryId    Int
-  category      Category           @relation(fields: [categoryId], references: [id])
-  attributes    ProductAttribute[]
-  images        ProductImage[]
-  stock         Int                @default(0)
-  createdAt     DateTime           @default(now())
-  updatedAt     DateTime           @updatedAt
-  deletedAt     DateTime? // Soft delete field
-  orderItems    OrderItem[]
-  cartItems     CartItem[]
-  wishlistItems WishlistItem[]
-  reviews       Review[]
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String?
+  price             Float
+  comparePrice      Float?
+  categoryId        Int
+  category          Category            @relation(fields: [categoryId], references: [id])
+  attributes        ProductAttribute[]
+  images            ProductImage[]
+  stock             Int                 @default(0)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  deletedAt         DateTime? // Soft delete field
+  orderItems        OrderItem[]
+  cartItems         CartItem[]
+  wishlistItems     WishlistItem[]
+  reviews           Review[]
+  CollectionProduct CollectionProduct[]
 }
 
 model ProductAttribute {
@@ -204,6 +207,25 @@ model WishlistItem {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   deletedAt  DateTime? // Soft delete field
+}
+
+model Collection {
+  id          Int                 @id @default(autoincrement())
+  name        String              @unique
+  description String?
+  products    CollectionProduct[]
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+}
+
+model CollectionProduct {
+  id           Int        @id @default(autoincrement())
+  collectionId Int
+  productId    Int
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, productId])
 }
 
 model Log {

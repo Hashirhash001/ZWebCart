@@ -4,7 +4,6 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaDynamicService } from '../../prisma/prisma.service';
-import { PrismaCentralService } from '../../prisma/prisma-central.service';
 import { CreateCategoryDto } from './dtos/create-category.dto';
 import { buildHierarchy } from './utils/category.utils';
 
@@ -12,7 +11,6 @@ import { buildHierarchy } from './utils/category.utils';
 export class CategoryService {
   constructor(
     private readonly prisma: PrismaDynamicService,
-    private readonly prismaCentral: PrismaCentralService,
   ) {}
 
   // Create Category

@@ -32,6 +32,12 @@ export class UpdateProductDto {
   @IsPositive()
   price?: number;
 
+  @IsOptional()  // Make it optional, you can omit if no comparePrice is provided
+  @IsNumber()
+  @Type(() => Number)
+  @IsPositive()
+  comparePrice?: number;
+
   @IsOptional()
   @IsNumber()
   @Type(() => Number) // Converts to a number
