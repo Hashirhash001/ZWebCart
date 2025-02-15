@@ -21,6 +21,7 @@ const crypto_utils_1 = require("../utils/crypto-utils");
 const validator = require("validator");
 const enum_log_utils_1 = require("../utils/enum-log-utils");
 const generated_store_1 = require("../../../prisma/generated-store");
+const nanoid_1 = require("nanoid");
 dotenv.config();
 let StoreAuthService = class StoreAuthService {
     constructor(prisma, jwtService) {
@@ -51,18 +52,20 @@ let StoreAuthService = class StoreAuthService {
             throw new common_1.ConflictException('Email already in use');
         }
         const uniqueIdentifier = Date.now();
+        const storeSlug = (0, nanoid_1.nanoid)(8);
+        const storeUrl = `https://${storeSlug}.zcart.com`;
         const dbName = `${sanitizedName}_db_${uniqueIdentifier}`;
-        const dbUrl = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost:5432/${dbName}`;
+        const dbUrl = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost:5433/${dbName}`;
         const encryptedDbUrl = (0, crypto_utils_1.encrypt)(dbUrl);
         const decryptedDbUrl = (0, crypto_utils_1.decrypt)(encryptedDbUrl);
         let dbClient;
-        let storeTransaction;
+        let userTransaction;
         try {
             dbClient = new pg_1.Client({
                 user: process.env.DB_USER,
                 host: 'localhost',
                 password: process.env.DB_PASSWORD,
-                port: 5432,
+                port: 5433,
                 database: 'postgres',
             });
             await dbClient.connect();
@@ -74,7 +77,21 @@ let StoreAuthService = class StoreAuthService {
             console.log(`Creating database: ${dbName}...`);
             await dbClient.query(`CREATE DATABASE "${dbName}"`);
             console.log(`Database ${dbName} created.`);
-            storeTransaction = await this.prisma.$transaction(async (prisma) => {
+            console.log('Running migrations...');
+            try {
+                const migrateCommand = `npx cross-env DATABASE_URL=${decryptedDbUrl} npx prisma migrate deploy --schema=prisma/schema.prisma`;
+                (0, child_process_1.execSync)(migrateCommand, { stdio: 'inherit' });
+                console.log('Migrations applied successfully.');
+            }
+            catch (migrationError) {
+                console.error('Migration failed:', migrationError);
+                console.log(`Rolling back: Dropping database ${dbName}...`);
+                await dbClient.$disconnect();
+                await dbClient.query(`DROP DATABASE IF EXISTS "${dbName}"`);
+                console.log('Database rollback complete.');
+                throw new common_1.InternalServerErrorException('Database migration failed', migrationError.message);
+            }
+            userTransaction = await this.prisma.$transaction(async (prisma) => {
                 const user = await prisma.user.create({
                     data: {
                         email: sanitizedEmail,
@@ -85,6 +102,7 @@ let StoreAuthService = class StoreAuthService {
                                 name: sanitizedName,
                                 dbName,
                                 dbUrl: encryptedDbUrl,
+                                storeUrl
                             },
                         },
                     },
@@ -92,15 +110,11 @@ let StoreAuthService = class StoreAuthService {
                 });
                 return user;
             });
-            if (!storeTransaction) {
+            if (!userTransaction) {
                 throw new Error('Transaction failed. Store creation aborted.');
             }
-            const user = storeTransaction;
+            const user = userTransaction;
             const storeId = user.stores[0].id;
-            console.log('Running migrations...');
-            const migrateCommand = `npx cross-env DATABASE_URL=${decryptedDbUrl} npx prisma migrate deploy --schema=prisma/schema.prisma`;
-            (0, child_process_1.execSync)(migrateCommand, { stdio: 'inherit' });
-            console.log('Migrations applied successfully.');
             const storePrisma = new generated_store_1.PrismaClient({
                 datasources: { db: { url: decryptedDbUrl } },
             });
@@ -115,6 +129,182 @@ let StoreAuthService = class StoreAuthService {
                 },
             });
             console.log('Store settings saved successfully.');
+            console.log(`Assigning default theme to store.`);
+            const theme = await storePrisma.theme.create({
+                data: {
+                    name: 'Default Theme',
+                    currentVersion: 1,
+                    templateUrl: '/themes/default',
+                    isActive: true,
+                    ThemeVersion: {
+                        create: {
+                            version: 1,
+                            config: {},
+                            isDefault: true,
+                        },
+                    },
+                },
+            });
+            console.log('Default theme assigned successfully.');
+            console.log('Creating default pages and sections...');
+            const pages = [
+                { title: 'Home', slug: 'home', sections: ['Hero', 'Featured Products', 'Testimonials'] },
+                { title: 'Products', slug: 'products', sections: ['Product List', 'Filters'] },
+                { title: 'Product Details', slug: 'product-details', sections: ['Product Images', 'Description', 'Reviews'] },
+                { title: 'Contact', slug: 'contact', sections: ['Contact Form', 'Map', 'Social Links'] },
+                { title: 'Login', slug: 'login', sections: ['Login Form'] },
+                { title: 'Register', slug: 'register', sections: ['Registration Form'] },
+                { title: 'Cart', slug: 'cart', sections: ['Cart'] },
+                { title: 'Checkout', slug: 'checkout', sections: ['Checkout'] }
+            ];
+            const globalSections = [
+                { type: 'Header', title: 'Main Header', isGlobal: true },
+                { type: 'Footer', title: 'Main Footer', isGlobal: true }
+            ];
+            for (const section of globalSections) {
+                await storePrisma.section.create({
+                    data: {
+                        type: section.type,
+                        title: section.title,
+                        isGlobal: section.isGlobal,
+                        order: 0,
+                        config: {},
+                        content: {},
+                        page: undefined,
+                    },
+                });
+            }
+            const sectionConfigs = {
+                Header: {
+                    config: {
+                        logoPosition: "left",
+                        menuStyle: "horizontal",
+                        showSearch: true,
+                        backgroundColor: "#ffffff",
+                        sticky: true
+                    },
+                    content: {
+                        logoUrl: "/assets/logo.png",
+                        menuItems: [
+                            { label: "Home", url: "/" },
+                            { label: "Products", url: "/products" },
+                            { label: "Contact", url: "/contact" }
+                        ],
+                        cartIcon: true,
+                        accountDropdown: true
+                    }
+                },
+                Footer: {
+                    config: {
+                        layout: "columns",
+                        backgroundColor: "#333",
+                        textColor: "#ffffff",
+                        showNewsletterSignup: true
+                    },
+                    content: {
+                        logoUrl: "/assets/logo.png",
+                        copyrightText: "© 2025 My Store. All rights reserved.",
+                        links: [
+                            { label: "Privacy Policy", url: "/privacy" },
+                            { label: "Terms of Service", url: "/terms" }
+                        ],
+                        socialMedia: [
+                            { platform: "Facebook", url: "https://facebook.com/mystore" },
+                            { platform: "Instagram", url: "https://instagram.com/mystore" }
+                        ]
+                    }
+                },
+                Hero: {
+                    config: { backgroundColor: "#fff", textAlignment: "center" },
+                    content: {
+                        title: "Welcome to our store!",
+                        subtitle: "Discover amazing products",
+                        buttonText: "Shop Now",
+                        buttonLink: "/products",
+                        imageUrl: "/banners/hero.jpg"
+                    }
+                },
+                "Featured Products": {
+                    config: { layout: "grid", maxItems: 8 },
+                    content: { productIds: [] }
+                },
+                Testimonials: {
+                    config: { layout: "carousel", autoScroll: true },
+                    content: { testimonials: [] }
+                },
+                "Product List": {
+                    config: { filterTypes: ["category", "price", "brand", "rating"] },
+                    content: {}
+                },
+                Filters: {
+                    config: { allowRatings: true, showStockStatus: true },
+                    content: {}
+                },
+                "Product Images": {
+                    config: {},
+                    content: { images: [], mainImageIndex: 0 }
+                },
+                Description: {
+                    config: {},
+                    content: { text: "", showReadMore: true }
+                },
+                Reviews: {
+                    config: {},
+                    content: { reviews: [], allowCustomerImages: true }
+                },
+                "Contact Form": {
+                    config: {},
+                    content: { fields: ["name", "email", "message"], enableCaptcha: true }
+                },
+                Map: {
+                    config: {},
+                    content: { location: { lat: 0, lng: 0 }, zoomLevel: 12 }
+                },
+                "Social Links": {
+                    config: {},
+                    content: { links: [{ platform: "Facebook", url: "" }, { platform: "Instagram", url: "" }] }
+                },
+                "Login Form": {
+                    config: {},
+                    content: {}
+                },
+                "Registration Form": {
+                    config: {},
+                    content: {}
+                },
+                Cart: {
+                    config: { allowCoupons: true, showEstimatedShipping: true },
+                    content: { items: [], totalPrice: 0 }
+                },
+                Checkout: {
+                    config: { allowGuestCheckout: true, showOrderSummary: true },
+                    content: { paymentMethods: ["Credit Card", "PayPal"], shippingOptions: [] }
+                }
+            };
+            for (const page of pages) {
+                const createdPage = await storePrisma.page.create({
+                    data: {
+                        title: page.title,
+                        slug: page.slug,
+                        themeId: theme.id,
+                        config: {},
+                        PageVersion: { create: { version: 1, config: {}, sections: {}, isPublished: true } },
+                    },
+                });
+                for (const [index, section] of page.sections.entries()) {
+                    const sectionData = sectionConfigs[section] || { config: {}, content: {} };
+                    await storePrisma.section.create({
+                        data: {
+                            pageId: createdPage.id,
+                            type: section,
+                            order: index + 1,
+                            config: sectionData.config,
+                            content: sectionData.content,
+                        },
+                    });
+                }
+            }
+            console.log('Default pages and sections created successfully.');
             const payload = {
                 sub: user.id,
                 email: user.email,
@@ -138,11 +328,6 @@ let StoreAuthService = class StoreAuthService {
         }
         catch (error) {
             console.error('Error during store registration:', error);
-            if (dbClient && dbName) {
-                console.log(`Rolling back: Dropping database ${dbName}...`);
-                await dbClient.query(`DROP DATABASE IF EXISTS "${dbName}"`);
-                console.log('Database rollback complete.');
-            }
             throw new common_1.InternalServerErrorException('Failed to register store', error.message);
         }
         finally {

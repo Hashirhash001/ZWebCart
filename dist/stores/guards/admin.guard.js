@@ -41,7 +41,7 @@ let AdminGuard = class AdminGuard {
                 throw new common_1.ForbiddenException('Store not found');
             }
             const decryptedDbUrl = (0, crypto_utils_1.decrypt)(store.dbUrl);
-            request['storeId'] = decoded.storeId;
+            request['storeId'] = storeId;
             request['storeDbUrl'] = decryptedDbUrl;
             return true;
         }

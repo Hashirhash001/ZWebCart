@@ -8,7 +8,11 @@ CREATE TYPE "LogLevel" AS ENUM ('INFO', 'WARN', 'ERROR', 'DEBUG');
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
+    "password" TEXT,
+    "googleId" TEXT,
+    "provider" TEXT NOT NULL DEFAULT 'local',
+    "name" TEXT,
+    "avatarUrl" TEXT,
     "role" "Role" NOT NULL DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -23,6 +27,7 @@ CREATE TABLE "Store" (
     "name" TEXT NOT NULL,
     "dbName" TEXT NOT NULL,
     "dbUrl" TEXT NOT NULL,
+    "storeUrl" TEXT NOT NULL,
     "ownerId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -49,10 +54,16 @@ CREATE TABLE "Log" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_googleId_key" ON "User"("googleId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Store_dbName_key" ON "Store"("dbName");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Store_dbUrl_key" ON "Store"("dbUrl");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Store_storeUrl_key" ON "Store"("storeUrl");
 
 -- AddForeignKey
 ALTER TABLE "Store" ADD CONSTRAINT "Store_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

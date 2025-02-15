@@ -9,7 +9,7 @@ import { StoreAuthService } from './store-auth.service';
     PrismaCentralModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '12h' },
+      signOptions: { expiresIn: '7d' },
     }),
   ],
   controllers: [StoreAuthController],

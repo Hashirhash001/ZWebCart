@@ -21,7 +21,7 @@ exports.StoreAuthModule = StoreAuthModule = __decorate([
             prisma_central_module_1.PrismaCentralModule,
             jwt_1.JwtModule.register({
                 secret: process.env.JWT_SECRET,
-                signOptions: { expiresIn: '12h' },
+                signOptions: { expiresIn: '7d' },
             }),
         ],
         controllers: [store_auth_controller_1.StoreAuthController],

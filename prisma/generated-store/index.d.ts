@@ -99,6 +99,31 @@ export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
  */
 export type CollectionProduct = $Result.DefaultSelection<Prisma.$CollectionProductPayload>
 /**
+ * Model Theme
+ * 
+ */
+export type Theme = $Result.DefaultSelection<Prisma.$ThemePayload>
+/**
+ * Model ThemeVersion
+ * 
+ */
+export type ThemeVersion = $Result.DefaultSelection<Prisma.$ThemeVersionPayload>
+/**
+ * Model Page
+ * 
+ */
+export type Page = $Result.DefaultSelection<Prisma.$PagePayload>
+/**
+ * Model PageVersion
+ * 
+ */
+export type PageVersion = $Result.DefaultSelection<Prisma.$PageVersionPayload>
+/**
+ * Model Section
+ * 
+ */
+export type Section = $Result.DefaultSelection<Prisma.$SectionPayload>
+/**
  * Model Log
  * 
  */
@@ -444,6 +469,56 @@ export class PrismaClient<
     * ```
     */
   get collectionProduct(): Prisma.CollectionProductDelegate<ExtArgs>;
+
+  /**
+   * `prisma.theme`: Exposes CRUD operations for the **Theme** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Themes
+    * const themes = await prisma.theme.findMany()
+    * ```
+    */
+  get theme(): Prisma.ThemeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.themeVersion`: Exposes CRUD operations for the **ThemeVersion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ThemeVersions
+    * const themeVersions = await prisma.themeVersion.findMany()
+    * ```
+    */
+  get themeVersion(): Prisma.ThemeVersionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.page`: Exposes CRUD operations for the **Page** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pages
+    * const pages = await prisma.page.findMany()
+    * ```
+    */
+  get page(): Prisma.PageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.pageVersion`: Exposes CRUD operations for the **PageVersion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageVersions
+    * const pageVersions = await prisma.pageVersion.findMany()
+    * ```
+    */
+  get pageVersion(): Prisma.PageVersionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.section`: Exposes CRUD operations for the **Section** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sections
+    * const sections = await prisma.section.findMany()
+    * ```
+    */
+  get section(): Prisma.SectionDelegate<ExtArgs>;
 
   /**
    * `prisma.log`: Exposes CRUD operations for the **Log** model.
@@ -911,6 +986,11 @@ export namespace Prisma {
     WishlistItem: 'WishlistItem',
     Collection: 'Collection',
     CollectionProduct: 'CollectionProduct',
+    Theme: 'Theme',
+    ThemeVersion: 'ThemeVersion',
+    Page: 'Page',
+    PageVersion: 'PageVersion',
+    Section: 'Section',
     Log: 'Log'
   };
 
@@ -927,7 +1007,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "storeSettings" | "user" | "address" | "category" | "categoryHierarchy" | "product" | "productAttribute" | "productImage" | "review" | "order" | "orderItem" | "cart" | "cartItem" | "wishlist" | "wishlistItem" | "collection" | "collectionProduct" | "log"
+      modelProps: "storeSettings" | "user" | "address" | "category" | "categoryHierarchy" | "product" | "productAttribute" | "productImage" | "review" | "order" | "orderItem" | "cart" | "cartItem" | "wishlist" | "wishlistItem" | "collection" | "collectionProduct" | "theme" | "themeVersion" | "page" | "pageVersion" | "section" | "log"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2121,6 +2201,356 @@ export namespace Prisma {
           }
         }
       }
+      Theme: {
+        payload: Prisma.$ThemePayload<ExtArgs>
+        fields: Prisma.ThemeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ThemeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ThemeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          findFirst: {
+            args: Prisma.ThemeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ThemeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          findMany: {
+            args: Prisma.ThemeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>[]
+          }
+          create: {
+            args: Prisma.ThemeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          createMany: {
+            args: Prisma.ThemeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ThemeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>[]
+          }
+          delete: {
+            args: Prisma.ThemeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          update: {
+            args: Prisma.ThemeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          deleteMany: {
+            args: Prisma.ThemeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ThemeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ThemeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemePayload>
+          }
+          aggregate: {
+            args: Prisma.ThemeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTheme>
+          }
+          groupBy: {
+            args: Prisma.ThemeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ThemeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ThemeCountArgs<ExtArgs>
+            result: $Utils.Optional<ThemeCountAggregateOutputType> | number
+          }
+        }
+      }
+      ThemeVersion: {
+        payload: Prisma.$ThemeVersionPayload<ExtArgs>
+        fields: Prisma.ThemeVersionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ThemeVersionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ThemeVersionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          findFirst: {
+            args: Prisma.ThemeVersionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ThemeVersionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          findMany: {
+            args: Prisma.ThemeVersionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>[]
+          }
+          create: {
+            args: Prisma.ThemeVersionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          createMany: {
+            args: Prisma.ThemeVersionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ThemeVersionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>[]
+          }
+          delete: {
+            args: Prisma.ThemeVersionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          update: {
+            args: Prisma.ThemeVersionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ThemeVersionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ThemeVersionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ThemeVersionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThemeVersionPayload>
+          }
+          aggregate: {
+            args: Prisma.ThemeVersionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateThemeVersion>
+          }
+          groupBy: {
+            args: Prisma.ThemeVersionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ThemeVersionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ThemeVersionCountArgs<ExtArgs>
+            result: $Utils.Optional<ThemeVersionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Page: {
+        payload: Prisma.$PagePayload<ExtArgs>
+        fields: Prisma.PageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          findFirst: {
+            args: Prisma.PageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          findMany: {
+            args: Prisma.PageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>[]
+          }
+          create: {
+            args: Prisma.PageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          createMany: {
+            args: Prisma.PageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>[]
+          }
+          delete: {
+            args: Prisma.PageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          update: {
+            args: Prisma.PageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          deleteMany: {
+            args: Prisma.PageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          aggregate: {
+            args: Prisma.PageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePage>
+          }
+          groupBy: {
+            args: Prisma.PageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageCountArgs<ExtArgs>
+            result: $Utils.Optional<PageCountAggregateOutputType> | number
+          }
+        }
+      }
+      PageVersion: {
+        payload: Prisma.$PageVersionPayload<ExtArgs>
+        fields: Prisma.PageVersionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageVersionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageVersionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          findFirst: {
+            args: Prisma.PageVersionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageVersionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          findMany: {
+            args: Prisma.PageVersionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>[]
+          }
+          create: {
+            args: Prisma.PageVersionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          createMany: {
+            args: Prisma.PageVersionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageVersionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>[]
+          }
+          delete: {
+            args: Prisma.PageVersionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          update: {
+            args: Prisma.PageVersionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          deleteMany: {
+            args: Prisma.PageVersionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageVersionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PageVersionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageVersionPayload>
+          }
+          aggregate: {
+            args: Prisma.PageVersionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePageVersion>
+          }
+          groupBy: {
+            args: Prisma.PageVersionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageVersionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageVersionCountArgs<ExtArgs>
+            result: $Utils.Optional<PageVersionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Section: {
+        payload: Prisma.$SectionPayload<ExtArgs>
+        fields: Prisma.SectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          findFirst: {
+            args: Prisma.SectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          findMany: {
+            args: Prisma.SectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>[]
+          }
+          create: {
+            args: Prisma.SectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          createMany: {
+            args: Prisma.SectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>[]
+          }
+          delete: {
+            args: Prisma.SectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          update: {
+            args: Prisma.SectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.SectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectionPayload>
+          }
+          aggregate: {
+            args: Prisma.SectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSection>
+          }
+          groupBy: {
+            args: Prisma.SectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SectionCountArgs<ExtArgs>
+            result: $Utils.Optional<SectionCountAggregateOutputType> | number
+          }
+        }
+      }
       Log: {
         payload: Prisma.$LogPayload<ExtArgs>
         fields: Prisma.LogFieldRefs
@@ -2691,6 +3121,86 @@ export namespace Prisma {
    */
   export type CollectionCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CollectionProductWhereInput
+  }
+
+
+  /**
+   * Count Type ThemeCountOutputType
+   */
+
+  export type ThemeCountOutputType = {
+    ThemeVersion: number
+    pages: number
+  }
+
+  export type ThemeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ThemeVersion?: boolean | ThemeCountOutputTypeCountThemeVersionArgs
+    pages?: boolean | ThemeCountOutputTypeCountPagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ThemeCountOutputType without action
+   */
+  export type ThemeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeCountOutputType
+     */
+    select?: ThemeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ThemeCountOutputType without action
+   */
+  export type ThemeCountOutputTypeCountThemeVersionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ThemeVersionWhereInput
+  }
+
+  /**
+   * ThemeCountOutputType without action
+   */
+  export type ThemeCountOutputTypeCountPagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+  }
+
+
+  /**
+   * Count Type PageCountOutputType
+   */
+
+  export type PageCountOutputType = {
+    sections: number
+    PageVersion: number
+  }
+
+  export type PageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sections?: boolean | PageCountOutputTypeCountSectionsArgs
+    PageVersion?: boolean | PageCountOutputTypeCountPageVersionArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PageCountOutputType without action
+   */
+  export type PageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageCountOutputType
+     */
+    select?: PageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PageCountOutputType without action
+   */
+  export type PageCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionWhereInput
+  }
+
+  /**
+   * PageCountOutputType without action
+   */
+  export type PageCountOutputTypeCountPageVersionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageVersionWhereInput
   }
 
 
@@ -20093,6 +20603,5112 @@ export namespace Prisma {
 
 
   /**
+   * Model Theme
+   */
+
+  export type AggregateTheme = {
+    _count: ThemeCountAggregateOutputType | null
+    _avg: ThemeAvgAggregateOutputType | null
+    _sum: ThemeSumAggregateOutputType | null
+    _min: ThemeMinAggregateOutputType | null
+    _max: ThemeMaxAggregateOutputType | null
+  }
+
+  export type ThemeAvgAggregateOutputType = {
+    id: number | null
+    currentVersion: number | null
+  }
+
+  export type ThemeSumAggregateOutputType = {
+    id: number | null
+    currentVersion: number | null
+  }
+
+  export type ThemeMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    currentVersion: number | null
+    templateUrl: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ThemeMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    currentVersion: number | null
+    templateUrl: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ThemeCountAggregateOutputType = {
+    id: number
+    name: number
+    currentVersion: number
+    templateUrl: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ThemeAvgAggregateInputType = {
+    id?: true
+    currentVersion?: true
+  }
+
+  export type ThemeSumAggregateInputType = {
+    id?: true
+    currentVersion?: true
+  }
+
+  export type ThemeMinAggregateInputType = {
+    id?: true
+    name?: true
+    currentVersion?: true
+    templateUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ThemeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    currentVersion?: true
+    templateUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ThemeCountAggregateInputType = {
+    id?: true
+    name?: true
+    currentVersion?: true
+    templateUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ThemeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Theme to aggregate.
+     */
+    where?: ThemeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Themes to fetch.
+     */
+    orderBy?: ThemeOrderByWithRelationInput | ThemeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ThemeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Themes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Themes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Themes
+    **/
+    _count?: true | ThemeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ThemeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ThemeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ThemeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ThemeMaxAggregateInputType
+  }
+
+  export type GetThemeAggregateType<T extends ThemeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTheme]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTheme[P]>
+      : GetScalarType<T[P], AggregateTheme[P]>
+  }
+
+
+
+
+  export type ThemeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ThemeWhereInput
+    orderBy?: ThemeOrderByWithAggregationInput | ThemeOrderByWithAggregationInput[]
+    by: ThemeScalarFieldEnum[] | ThemeScalarFieldEnum
+    having?: ThemeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ThemeCountAggregateInputType | true
+    _avg?: ThemeAvgAggregateInputType
+    _sum?: ThemeSumAggregateInputType
+    _min?: ThemeMinAggregateInputType
+    _max?: ThemeMaxAggregateInputType
+  }
+
+  export type ThemeGroupByOutputType = {
+    id: number
+    name: string
+    currentVersion: number
+    templateUrl: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ThemeCountAggregateOutputType | null
+    _avg: ThemeAvgAggregateOutputType | null
+    _sum: ThemeSumAggregateOutputType | null
+    _min: ThemeMinAggregateOutputType | null
+    _max: ThemeMaxAggregateOutputType | null
+  }
+
+  type GetThemeGroupByPayload<T extends ThemeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ThemeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ThemeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ThemeGroupByOutputType[P]>
+            : GetScalarType<T[P], ThemeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ThemeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    currentVersion?: boolean
+    templateUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ThemeVersion?: boolean | Theme$ThemeVersionArgs<ExtArgs>
+    pages?: boolean | Theme$pagesArgs<ExtArgs>
+    _count?: boolean | ThemeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["theme"]>
+
+  export type ThemeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    currentVersion?: boolean
+    templateUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["theme"]>
+
+  export type ThemeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    currentVersion?: boolean
+    templateUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ThemeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ThemeVersion?: boolean | Theme$ThemeVersionArgs<ExtArgs>
+    pages?: boolean | Theme$pagesArgs<ExtArgs>
+    _count?: boolean | ThemeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ThemeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ThemePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Theme"
+    objects: {
+      ThemeVersion: Prisma.$ThemeVersionPayload<ExtArgs>[]
+      pages: Prisma.$PagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      currentVersion: number
+      templateUrl: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["theme"]>
+    composites: {}
+  }
+
+  type ThemeGetPayload<S extends boolean | null | undefined | ThemeDefaultArgs> = $Result.GetResult<Prisma.$ThemePayload, S>
+
+  type ThemeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ThemeFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ThemeCountAggregateInputType | true
+    }
+
+  export interface ThemeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Theme'], meta: { name: 'Theme' } }
+    /**
+     * Find zero or one Theme that matches the filter.
+     * @param {ThemeFindUniqueArgs} args - Arguments to find a Theme
+     * @example
+     * // Get one Theme
+     * const theme = await prisma.theme.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ThemeFindUniqueArgs>(args: SelectSubset<T, ThemeFindUniqueArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Theme that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ThemeFindUniqueOrThrowArgs} args - Arguments to find a Theme
+     * @example
+     * // Get one Theme
+     * const theme = await prisma.theme.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ThemeFindUniqueOrThrowArgs>(args: SelectSubset<T, ThemeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Theme that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeFindFirstArgs} args - Arguments to find a Theme
+     * @example
+     * // Get one Theme
+     * const theme = await prisma.theme.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ThemeFindFirstArgs>(args?: SelectSubset<T, ThemeFindFirstArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Theme that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeFindFirstOrThrowArgs} args - Arguments to find a Theme
+     * @example
+     * // Get one Theme
+     * const theme = await prisma.theme.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ThemeFindFirstOrThrowArgs>(args?: SelectSubset<T, ThemeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Themes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Themes
+     * const themes = await prisma.theme.findMany()
+     * 
+     * // Get first 10 Themes
+     * const themes = await prisma.theme.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const themeWithIdOnly = await prisma.theme.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ThemeFindManyArgs>(args?: SelectSubset<T, ThemeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Theme.
+     * @param {ThemeCreateArgs} args - Arguments to create a Theme.
+     * @example
+     * // Create one Theme
+     * const Theme = await prisma.theme.create({
+     *   data: {
+     *     // ... data to create a Theme
+     *   }
+     * })
+     * 
+     */
+    create<T extends ThemeCreateArgs>(args: SelectSubset<T, ThemeCreateArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Themes.
+     * @param {ThemeCreateManyArgs} args - Arguments to create many Themes.
+     * @example
+     * // Create many Themes
+     * const theme = await prisma.theme.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ThemeCreateManyArgs>(args?: SelectSubset<T, ThemeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Themes and returns the data saved in the database.
+     * @param {ThemeCreateManyAndReturnArgs} args - Arguments to create many Themes.
+     * @example
+     * // Create many Themes
+     * const theme = await prisma.theme.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Themes and only return the `id`
+     * const themeWithIdOnly = await prisma.theme.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ThemeCreateManyAndReturnArgs>(args?: SelectSubset<T, ThemeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Theme.
+     * @param {ThemeDeleteArgs} args - Arguments to delete one Theme.
+     * @example
+     * // Delete one Theme
+     * const Theme = await prisma.theme.delete({
+     *   where: {
+     *     // ... filter to delete one Theme
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ThemeDeleteArgs>(args: SelectSubset<T, ThemeDeleteArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Theme.
+     * @param {ThemeUpdateArgs} args - Arguments to update one Theme.
+     * @example
+     * // Update one Theme
+     * const theme = await prisma.theme.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ThemeUpdateArgs>(args: SelectSubset<T, ThemeUpdateArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Themes.
+     * @param {ThemeDeleteManyArgs} args - Arguments to filter Themes to delete.
+     * @example
+     * // Delete a few Themes
+     * const { count } = await prisma.theme.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ThemeDeleteManyArgs>(args?: SelectSubset<T, ThemeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Themes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Themes
+     * const theme = await prisma.theme.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ThemeUpdateManyArgs>(args: SelectSubset<T, ThemeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Theme.
+     * @param {ThemeUpsertArgs} args - Arguments to update or create a Theme.
+     * @example
+     * // Update or create a Theme
+     * const theme = await prisma.theme.upsert({
+     *   create: {
+     *     // ... data to create a Theme
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Theme we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ThemeUpsertArgs>(args: SelectSubset<T, ThemeUpsertArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Themes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeCountArgs} args - Arguments to filter Themes to count.
+     * @example
+     * // Count the number of Themes
+     * const count = await prisma.theme.count({
+     *   where: {
+     *     // ... the filter for the Themes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ThemeCountArgs>(
+      args?: Subset<T, ThemeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ThemeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Theme.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ThemeAggregateArgs>(args: Subset<T, ThemeAggregateArgs>): Prisma.PrismaPromise<GetThemeAggregateType<T>>
+
+    /**
+     * Group by Theme.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ThemeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ThemeGroupByArgs['orderBy'] }
+        : { orderBy?: ThemeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ThemeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetThemeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Theme model
+   */
+  readonly fields: ThemeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Theme.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ThemeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ThemeVersion<T extends Theme$ThemeVersionArgs<ExtArgs> = {}>(args?: Subset<T, Theme$ThemeVersionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findMany"> | Null>
+    pages<T extends Theme$pagesArgs<ExtArgs> = {}>(args?: Subset<T, Theme$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Theme model
+   */ 
+  interface ThemeFieldRefs {
+    readonly id: FieldRef<"Theme", 'Int'>
+    readonly name: FieldRef<"Theme", 'String'>
+    readonly currentVersion: FieldRef<"Theme", 'Int'>
+    readonly templateUrl: FieldRef<"Theme", 'String'>
+    readonly isActive: FieldRef<"Theme", 'Boolean'>
+    readonly createdAt: FieldRef<"Theme", 'DateTime'>
+    readonly updatedAt: FieldRef<"Theme", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Theme findUnique
+   */
+  export type ThemeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter, which Theme to fetch.
+     */
+    where: ThemeWhereUniqueInput
+  }
+
+  /**
+   * Theme findUniqueOrThrow
+   */
+  export type ThemeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter, which Theme to fetch.
+     */
+    where: ThemeWhereUniqueInput
+  }
+
+  /**
+   * Theme findFirst
+   */
+  export type ThemeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter, which Theme to fetch.
+     */
+    where?: ThemeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Themes to fetch.
+     */
+    orderBy?: ThemeOrderByWithRelationInput | ThemeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Themes.
+     */
+    cursor?: ThemeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Themes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Themes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Themes.
+     */
+    distinct?: ThemeScalarFieldEnum | ThemeScalarFieldEnum[]
+  }
+
+  /**
+   * Theme findFirstOrThrow
+   */
+  export type ThemeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter, which Theme to fetch.
+     */
+    where?: ThemeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Themes to fetch.
+     */
+    orderBy?: ThemeOrderByWithRelationInput | ThemeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Themes.
+     */
+    cursor?: ThemeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Themes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Themes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Themes.
+     */
+    distinct?: ThemeScalarFieldEnum | ThemeScalarFieldEnum[]
+  }
+
+  /**
+   * Theme findMany
+   */
+  export type ThemeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter, which Themes to fetch.
+     */
+    where?: ThemeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Themes to fetch.
+     */
+    orderBy?: ThemeOrderByWithRelationInput | ThemeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Themes.
+     */
+    cursor?: ThemeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Themes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Themes.
+     */
+    skip?: number
+    distinct?: ThemeScalarFieldEnum | ThemeScalarFieldEnum[]
+  }
+
+  /**
+   * Theme create
+   */
+  export type ThemeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Theme.
+     */
+    data: XOR<ThemeCreateInput, ThemeUncheckedCreateInput>
+  }
+
+  /**
+   * Theme createMany
+   */
+  export type ThemeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Themes.
+     */
+    data: ThemeCreateManyInput | ThemeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Theme createManyAndReturn
+   */
+  export type ThemeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Themes.
+     */
+    data: ThemeCreateManyInput | ThemeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Theme update
+   */
+  export type ThemeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Theme.
+     */
+    data: XOR<ThemeUpdateInput, ThemeUncheckedUpdateInput>
+    /**
+     * Choose, which Theme to update.
+     */
+    where: ThemeWhereUniqueInput
+  }
+
+  /**
+   * Theme updateMany
+   */
+  export type ThemeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Themes.
+     */
+    data: XOR<ThemeUpdateManyMutationInput, ThemeUncheckedUpdateManyInput>
+    /**
+     * Filter which Themes to update
+     */
+    where?: ThemeWhereInput
+  }
+
+  /**
+   * Theme upsert
+   */
+  export type ThemeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Theme to update in case it exists.
+     */
+    where: ThemeWhereUniqueInput
+    /**
+     * In case the Theme found by the `where` argument doesn't exist, create a new Theme with this data.
+     */
+    create: XOR<ThemeCreateInput, ThemeUncheckedCreateInput>
+    /**
+     * In case the Theme was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ThemeUpdateInput, ThemeUncheckedUpdateInput>
+  }
+
+  /**
+   * Theme delete
+   */
+  export type ThemeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    /**
+     * Filter which Theme to delete.
+     */
+    where: ThemeWhereUniqueInput
+  }
+
+  /**
+   * Theme deleteMany
+   */
+  export type ThemeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Themes to delete
+     */
+    where?: ThemeWhereInput
+  }
+
+  /**
+   * Theme.ThemeVersion
+   */
+  export type Theme$ThemeVersionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    where?: ThemeVersionWhereInput
+    orderBy?: ThemeVersionOrderByWithRelationInput | ThemeVersionOrderByWithRelationInput[]
+    cursor?: ThemeVersionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ThemeVersionScalarFieldEnum | ThemeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * Theme.pages
+   */
+  export type Theme$pagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    cursor?: PageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Theme without action
+   */
+  export type ThemeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ThemeVersion
+   */
+
+  export type AggregateThemeVersion = {
+    _count: ThemeVersionCountAggregateOutputType | null
+    _avg: ThemeVersionAvgAggregateOutputType | null
+    _sum: ThemeVersionSumAggregateOutputType | null
+    _min: ThemeVersionMinAggregateOutputType | null
+    _max: ThemeVersionMaxAggregateOutputType | null
+  }
+
+  export type ThemeVersionAvgAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+    version: number | null
+  }
+
+  export type ThemeVersionSumAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+    version: number | null
+  }
+
+  export type ThemeVersionMinAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+    version: number | null
+    isDefault: boolean | null
+    createdAt: Date | null
+  }
+
+  export type ThemeVersionMaxAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+    version: number | null
+    isDefault: boolean | null
+    createdAt: Date | null
+  }
+
+  export type ThemeVersionCountAggregateOutputType = {
+    id: number
+    themeId: number
+    version: number
+    config: number
+    isDefault: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ThemeVersionAvgAggregateInputType = {
+    id?: true
+    themeId?: true
+    version?: true
+  }
+
+  export type ThemeVersionSumAggregateInputType = {
+    id?: true
+    themeId?: true
+    version?: true
+  }
+
+  export type ThemeVersionMinAggregateInputType = {
+    id?: true
+    themeId?: true
+    version?: true
+    isDefault?: true
+    createdAt?: true
+  }
+
+  export type ThemeVersionMaxAggregateInputType = {
+    id?: true
+    themeId?: true
+    version?: true
+    isDefault?: true
+    createdAt?: true
+  }
+
+  export type ThemeVersionCountAggregateInputType = {
+    id?: true
+    themeId?: true
+    version?: true
+    config?: true
+    isDefault?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ThemeVersionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ThemeVersion to aggregate.
+     */
+    where?: ThemeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ThemeVersions to fetch.
+     */
+    orderBy?: ThemeVersionOrderByWithRelationInput | ThemeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ThemeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ThemeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ThemeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ThemeVersions
+    **/
+    _count?: true | ThemeVersionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ThemeVersionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ThemeVersionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ThemeVersionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ThemeVersionMaxAggregateInputType
+  }
+
+  export type GetThemeVersionAggregateType<T extends ThemeVersionAggregateArgs> = {
+        [P in keyof T & keyof AggregateThemeVersion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateThemeVersion[P]>
+      : GetScalarType<T[P], AggregateThemeVersion[P]>
+  }
+
+
+
+
+  export type ThemeVersionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ThemeVersionWhereInput
+    orderBy?: ThemeVersionOrderByWithAggregationInput | ThemeVersionOrderByWithAggregationInput[]
+    by: ThemeVersionScalarFieldEnum[] | ThemeVersionScalarFieldEnum
+    having?: ThemeVersionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ThemeVersionCountAggregateInputType | true
+    _avg?: ThemeVersionAvgAggregateInputType
+    _sum?: ThemeVersionSumAggregateInputType
+    _min?: ThemeVersionMinAggregateInputType
+    _max?: ThemeVersionMaxAggregateInputType
+  }
+
+  export type ThemeVersionGroupByOutputType = {
+    id: number
+    themeId: number
+    version: number
+    config: JsonValue
+    isDefault: boolean
+    createdAt: Date
+    _count: ThemeVersionCountAggregateOutputType | null
+    _avg: ThemeVersionAvgAggregateOutputType | null
+    _sum: ThemeVersionSumAggregateOutputType | null
+    _min: ThemeVersionMinAggregateOutputType | null
+    _max: ThemeVersionMaxAggregateOutputType | null
+  }
+
+  type GetThemeVersionGroupByPayload<T extends ThemeVersionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ThemeVersionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ThemeVersionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ThemeVersionGroupByOutputType[P]>
+            : GetScalarType<T[P], ThemeVersionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ThemeVersionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    themeId?: boolean
+    version?: boolean
+    config?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    theme?: boolean | ThemeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["themeVersion"]>
+
+  export type ThemeVersionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    themeId?: boolean
+    version?: boolean
+    config?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+    theme?: boolean | ThemeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["themeVersion"]>
+
+  export type ThemeVersionSelectScalar = {
+    id?: boolean
+    themeId?: boolean
+    version?: boolean
+    config?: boolean
+    isDefault?: boolean
+    createdAt?: boolean
+  }
+
+  export type ThemeVersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    theme?: boolean | ThemeDefaultArgs<ExtArgs>
+  }
+  export type ThemeVersionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    theme?: boolean | ThemeDefaultArgs<ExtArgs>
+  }
+
+  export type $ThemeVersionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ThemeVersion"
+    objects: {
+      theme: Prisma.$ThemePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      themeId: number
+      version: number
+      config: Prisma.JsonValue
+      isDefault: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["themeVersion"]>
+    composites: {}
+  }
+
+  type ThemeVersionGetPayload<S extends boolean | null | undefined | ThemeVersionDefaultArgs> = $Result.GetResult<Prisma.$ThemeVersionPayload, S>
+
+  type ThemeVersionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ThemeVersionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ThemeVersionCountAggregateInputType | true
+    }
+
+  export interface ThemeVersionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ThemeVersion'], meta: { name: 'ThemeVersion' } }
+    /**
+     * Find zero or one ThemeVersion that matches the filter.
+     * @param {ThemeVersionFindUniqueArgs} args - Arguments to find a ThemeVersion
+     * @example
+     * // Get one ThemeVersion
+     * const themeVersion = await prisma.themeVersion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ThemeVersionFindUniqueArgs>(args: SelectSubset<T, ThemeVersionFindUniqueArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ThemeVersion that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ThemeVersionFindUniqueOrThrowArgs} args - Arguments to find a ThemeVersion
+     * @example
+     * // Get one ThemeVersion
+     * const themeVersion = await prisma.themeVersion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ThemeVersionFindUniqueOrThrowArgs>(args: SelectSubset<T, ThemeVersionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ThemeVersion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionFindFirstArgs} args - Arguments to find a ThemeVersion
+     * @example
+     * // Get one ThemeVersion
+     * const themeVersion = await prisma.themeVersion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ThemeVersionFindFirstArgs>(args?: SelectSubset<T, ThemeVersionFindFirstArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ThemeVersion that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionFindFirstOrThrowArgs} args - Arguments to find a ThemeVersion
+     * @example
+     * // Get one ThemeVersion
+     * const themeVersion = await prisma.themeVersion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ThemeVersionFindFirstOrThrowArgs>(args?: SelectSubset<T, ThemeVersionFindFirstOrThrowArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ThemeVersions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ThemeVersions
+     * const themeVersions = await prisma.themeVersion.findMany()
+     * 
+     * // Get first 10 ThemeVersions
+     * const themeVersions = await prisma.themeVersion.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const themeVersionWithIdOnly = await prisma.themeVersion.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ThemeVersionFindManyArgs>(args?: SelectSubset<T, ThemeVersionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ThemeVersion.
+     * @param {ThemeVersionCreateArgs} args - Arguments to create a ThemeVersion.
+     * @example
+     * // Create one ThemeVersion
+     * const ThemeVersion = await prisma.themeVersion.create({
+     *   data: {
+     *     // ... data to create a ThemeVersion
+     *   }
+     * })
+     * 
+     */
+    create<T extends ThemeVersionCreateArgs>(args: SelectSubset<T, ThemeVersionCreateArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ThemeVersions.
+     * @param {ThemeVersionCreateManyArgs} args - Arguments to create many ThemeVersions.
+     * @example
+     * // Create many ThemeVersions
+     * const themeVersion = await prisma.themeVersion.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ThemeVersionCreateManyArgs>(args?: SelectSubset<T, ThemeVersionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ThemeVersions and returns the data saved in the database.
+     * @param {ThemeVersionCreateManyAndReturnArgs} args - Arguments to create many ThemeVersions.
+     * @example
+     * // Create many ThemeVersions
+     * const themeVersion = await prisma.themeVersion.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ThemeVersions and only return the `id`
+     * const themeVersionWithIdOnly = await prisma.themeVersion.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ThemeVersionCreateManyAndReturnArgs>(args?: SelectSubset<T, ThemeVersionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ThemeVersion.
+     * @param {ThemeVersionDeleteArgs} args - Arguments to delete one ThemeVersion.
+     * @example
+     * // Delete one ThemeVersion
+     * const ThemeVersion = await prisma.themeVersion.delete({
+     *   where: {
+     *     // ... filter to delete one ThemeVersion
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ThemeVersionDeleteArgs>(args: SelectSubset<T, ThemeVersionDeleteArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ThemeVersion.
+     * @param {ThemeVersionUpdateArgs} args - Arguments to update one ThemeVersion.
+     * @example
+     * // Update one ThemeVersion
+     * const themeVersion = await prisma.themeVersion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ThemeVersionUpdateArgs>(args: SelectSubset<T, ThemeVersionUpdateArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ThemeVersions.
+     * @param {ThemeVersionDeleteManyArgs} args - Arguments to filter ThemeVersions to delete.
+     * @example
+     * // Delete a few ThemeVersions
+     * const { count } = await prisma.themeVersion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ThemeVersionDeleteManyArgs>(args?: SelectSubset<T, ThemeVersionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ThemeVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ThemeVersions
+     * const themeVersion = await prisma.themeVersion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ThemeVersionUpdateManyArgs>(args: SelectSubset<T, ThemeVersionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ThemeVersion.
+     * @param {ThemeVersionUpsertArgs} args - Arguments to update or create a ThemeVersion.
+     * @example
+     * // Update or create a ThemeVersion
+     * const themeVersion = await prisma.themeVersion.upsert({
+     *   create: {
+     *     // ... data to create a ThemeVersion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ThemeVersion we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ThemeVersionUpsertArgs>(args: SelectSubset<T, ThemeVersionUpsertArgs<ExtArgs>>): Prisma__ThemeVersionClient<$Result.GetResult<Prisma.$ThemeVersionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ThemeVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionCountArgs} args - Arguments to filter ThemeVersions to count.
+     * @example
+     * // Count the number of ThemeVersions
+     * const count = await prisma.themeVersion.count({
+     *   where: {
+     *     // ... the filter for the ThemeVersions we want to count
+     *   }
+     * })
+    **/
+    count<T extends ThemeVersionCountArgs>(
+      args?: Subset<T, ThemeVersionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ThemeVersionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ThemeVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ThemeVersionAggregateArgs>(args: Subset<T, ThemeVersionAggregateArgs>): Prisma.PrismaPromise<GetThemeVersionAggregateType<T>>
+
+    /**
+     * Group by ThemeVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThemeVersionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ThemeVersionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ThemeVersionGroupByArgs['orderBy'] }
+        : { orderBy?: ThemeVersionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ThemeVersionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetThemeVersionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ThemeVersion model
+   */
+  readonly fields: ThemeVersionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ThemeVersion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ThemeVersionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    theme<T extends ThemeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ThemeDefaultArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ThemeVersion model
+   */ 
+  interface ThemeVersionFieldRefs {
+    readonly id: FieldRef<"ThemeVersion", 'Int'>
+    readonly themeId: FieldRef<"ThemeVersion", 'Int'>
+    readonly version: FieldRef<"ThemeVersion", 'Int'>
+    readonly config: FieldRef<"ThemeVersion", 'Json'>
+    readonly isDefault: FieldRef<"ThemeVersion", 'Boolean'>
+    readonly createdAt: FieldRef<"ThemeVersion", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ThemeVersion findUnique
+   */
+  export type ThemeVersionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which ThemeVersion to fetch.
+     */
+    where: ThemeVersionWhereUniqueInput
+  }
+
+  /**
+   * ThemeVersion findUniqueOrThrow
+   */
+  export type ThemeVersionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which ThemeVersion to fetch.
+     */
+    where: ThemeVersionWhereUniqueInput
+  }
+
+  /**
+   * ThemeVersion findFirst
+   */
+  export type ThemeVersionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which ThemeVersion to fetch.
+     */
+    where?: ThemeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ThemeVersions to fetch.
+     */
+    orderBy?: ThemeVersionOrderByWithRelationInput | ThemeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ThemeVersions.
+     */
+    cursor?: ThemeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ThemeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ThemeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ThemeVersions.
+     */
+    distinct?: ThemeVersionScalarFieldEnum | ThemeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * ThemeVersion findFirstOrThrow
+   */
+  export type ThemeVersionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which ThemeVersion to fetch.
+     */
+    where?: ThemeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ThemeVersions to fetch.
+     */
+    orderBy?: ThemeVersionOrderByWithRelationInput | ThemeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ThemeVersions.
+     */
+    cursor?: ThemeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ThemeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ThemeVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ThemeVersions.
+     */
+    distinct?: ThemeVersionScalarFieldEnum | ThemeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * ThemeVersion findMany
+   */
+  export type ThemeVersionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which ThemeVersions to fetch.
+     */
+    where?: ThemeVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ThemeVersions to fetch.
+     */
+    orderBy?: ThemeVersionOrderByWithRelationInput | ThemeVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ThemeVersions.
+     */
+    cursor?: ThemeVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ThemeVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ThemeVersions.
+     */
+    skip?: number
+    distinct?: ThemeVersionScalarFieldEnum | ThemeVersionScalarFieldEnum[]
+  }
+
+  /**
+   * ThemeVersion create
+   */
+  export type ThemeVersionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ThemeVersion.
+     */
+    data: XOR<ThemeVersionCreateInput, ThemeVersionUncheckedCreateInput>
+  }
+
+  /**
+   * ThemeVersion createMany
+   */
+  export type ThemeVersionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ThemeVersions.
+     */
+    data: ThemeVersionCreateManyInput | ThemeVersionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ThemeVersion createManyAndReturn
+   */
+  export type ThemeVersionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ThemeVersions.
+     */
+    data: ThemeVersionCreateManyInput | ThemeVersionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ThemeVersion update
+   */
+  export type ThemeVersionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ThemeVersion.
+     */
+    data: XOR<ThemeVersionUpdateInput, ThemeVersionUncheckedUpdateInput>
+    /**
+     * Choose, which ThemeVersion to update.
+     */
+    where: ThemeVersionWhereUniqueInput
+  }
+
+  /**
+   * ThemeVersion updateMany
+   */
+  export type ThemeVersionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ThemeVersions.
+     */
+    data: XOR<ThemeVersionUpdateManyMutationInput, ThemeVersionUncheckedUpdateManyInput>
+    /**
+     * Filter which ThemeVersions to update
+     */
+    where?: ThemeVersionWhereInput
+  }
+
+  /**
+   * ThemeVersion upsert
+   */
+  export type ThemeVersionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ThemeVersion to update in case it exists.
+     */
+    where: ThemeVersionWhereUniqueInput
+    /**
+     * In case the ThemeVersion found by the `where` argument doesn't exist, create a new ThemeVersion with this data.
+     */
+    create: XOR<ThemeVersionCreateInput, ThemeVersionUncheckedCreateInput>
+    /**
+     * In case the ThemeVersion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ThemeVersionUpdateInput, ThemeVersionUncheckedUpdateInput>
+  }
+
+  /**
+   * ThemeVersion delete
+   */
+  export type ThemeVersionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+    /**
+     * Filter which ThemeVersion to delete.
+     */
+    where: ThemeVersionWhereUniqueInput
+  }
+
+  /**
+   * ThemeVersion deleteMany
+   */
+  export type ThemeVersionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ThemeVersions to delete
+     */
+    where?: ThemeVersionWhereInput
+  }
+
+  /**
+   * ThemeVersion without action
+   */
+  export type ThemeVersionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThemeVersion
+     */
+    select?: ThemeVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeVersionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Page
+   */
+
+  export type AggregatePage = {
+    _count: PageCountAggregateOutputType | null
+    _avg: PageAvgAggregateOutputType | null
+    _sum: PageSumAggregateOutputType | null
+    _min: PageMinAggregateOutputType | null
+    _max: PageMaxAggregateOutputType | null
+  }
+
+  export type PageAvgAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+  }
+
+  export type PageSumAggregateOutputType = {
+    id: number | null
+    themeId: number | null
+  }
+
+  export type PageMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    slug: string | null
+    themeId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PageMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    slug: string | null
+    themeId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PageCountAggregateOutputType = {
+    id: number
+    title: number
+    slug: number
+    config: number
+    themeId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PageAvgAggregateInputType = {
+    id?: true
+    themeId?: true
+  }
+
+  export type PageSumAggregateInputType = {
+    id?: true
+    themeId?: true
+  }
+
+  export type PageMinAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    themeId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PageMaxAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    themeId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PageCountAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    config?: true
+    themeId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Page to aggregate.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Pages
+    **/
+    _count?: true | PageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageMaxAggregateInputType
+  }
+
+  export type GetPageAggregateType<T extends PageAggregateArgs> = {
+        [P in keyof T & keyof AggregatePage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePage[P]>
+      : GetScalarType<T[P], AggregatePage[P]>
+  }
+
+
+
+
+  export type PageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithAggregationInput | PageOrderByWithAggregationInput[]
+    by: PageScalarFieldEnum[] | PageScalarFieldEnum
+    having?: PageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageCountAggregateInputType | true
+    _avg?: PageAvgAggregateInputType
+    _sum?: PageSumAggregateInputType
+    _min?: PageMinAggregateInputType
+    _max?: PageMaxAggregateInputType
+  }
+
+  export type PageGroupByOutputType = {
+    id: number
+    title: string
+    slug: string
+    config: JsonValue | null
+    themeId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PageCountAggregateOutputType | null
+    _avg: PageAvgAggregateOutputType | null
+    _sum: PageSumAggregateOutputType | null
+    _min: PageMinAggregateOutputType | null
+    _max: PageMaxAggregateOutputType | null
+  }
+
+  type GetPageGroupByPayload<T extends PageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageGroupByOutputType[P]>
+            : GetScalarType<T[P], PageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    config?: boolean
+    themeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    theme?: boolean | Page$themeArgs<ExtArgs>
+    sections?: boolean | Page$sectionsArgs<ExtArgs>
+    PageVersion?: boolean | Page$PageVersionArgs<ExtArgs>
+    _count?: boolean | PageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["page"]>
+
+  export type PageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    config?: boolean
+    themeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    theme?: boolean | Page$themeArgs<ExtArgs>
+  }, ExtArgs["result"]["page"]>
+
+  export type PageSelectScalar = {
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    config?: boolean
+    themeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    theme?: boolean | Page$themeArgs<ExtArgs>
+    sections?: boolean | Page$sectionsArgs<ExtArgs>
+    PageVersion?: boolean | Page$PageVersionArgs<ExtArgs>
+    _count?: boolean | PageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    theme?: boolean | Page$themeArgs<ExtArgs>
+  }
+
+  export type $PagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Page"
+    objects: {
+      theme: Prisma.$ThemePayload<ExtArgs> | null
+      sections: Prisma.$SectionPayload<ExtArgs>[]
+      PageVersion: Prisma.$PageVersionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      slug: string
+      config: Prisma.JsonValue | null
+      themeId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["page"]>
+    composites: {}
+  }
+
+  type PageGetPayload<S extends boolean | null | undefined | PageDefaultArgs> = $Result.GetResult<Prisma.$PagePayload, S>
+
+  type PageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PageCountAggregateInputType | true
+    }
+
+  export interface PageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Page'], meta: { name: 'Page' } }
+    /**
+     * Find zero or one Page that matches the filter.
+     * @param {PageFindUniqueArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageFindUniqueArgs>(args: SelectSubset<T, PageFindUniqueArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Page that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PageFindUniqueOrThrowArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageFindUniqueOrThrowArgs>(args: SelectSubset<T, PageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Page that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindFirstArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageFindFirstArgs>(args?: SelectSubset<T, PageFindFirstArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Page that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindFirstOrThrowArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageFindFirstOrThrowArgs>(args?: SelectSubset<T, PageFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Pages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pages
+     * const pages = await prisma.page.findMany()
+     * 
+     * // Get first 10 Pages
+     * const pages = await prisma.page.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageWithIdOnly = await prisma.page.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageFindManyArgs>(args?: SelectSubset<T, PageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Page.
+     * @param {PageCreateArgs} args - Arguments to create a Page.
+     * @example
+     * // Create one Page
+     * const Page = await prisma.page.create({
+     *   data: {
+     *     // ... data to create a Page
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageCreateArgs>(args: SelectSubset<T, PageCreateArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Pages.
+     * @param {PageCreateManyArgs} args - Arguments to create many Pages.
+     * @example
+     * // Create many Pages
+     * const page = await prisma.page.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageCreateManyArgs>(args?: SelectSubset<T, PageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Pages and returns the data saved in the database.
+     * @param {PageCreateManyAndReturnArgs} args - Arguments to create many Pages.
+     * @example
+     * // Create many Pages
+     * const page = await prisma.page.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Pages and only return the `id`
+     * const pageWithIdOnly = await prisma.page.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageCreateManyAndReturnArgs>(args?: SelectSubset<T, PageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Page.
+     * @param {PageDeleteArgs} args - Arguments to delete one Page.
+     * @example
+     * // Delete one Page
+     * const Page = await prisma.page.delete({
+     *   where: {
+     *     // ... filter to delete one Page
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageDeleteArgs>(args: SelectSubset<T, PageDeleteArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Page.
+     * @param {PageUpdateArgs} args - Arguments to update one Page.
+     * @example
+     * // Update one Page
+     * const page = await prisma.page.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageUpdateArgs>(args: SelectSubset<T, PageUpdateArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Pages.
+     * @param {PageDeleteManyArgs} args - Arguments to filter Pages to delete.
+     * @example
+     * // Delete a few Pages
+     * const { count } = await prisma.page.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageDeleteManyArgs>(args?: SelectSubset<T, PageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Pages
+     * const page = await prisma.page.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageUpdateManyArgs>(args: SelectSubset<T, PageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Page.
+     * @param {PageUpsertArgs} args - Arguments to update or create a Page.
+     * @example
+     * // Update or create a Page
+     * const page = await prisma.page.upsert({
+     *   create: {
+     *     // ... data to create a Page
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Page we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageUpsertArgs>(args: SelectSubset<T, PageUpsertArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Pages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageCountArgs} args - Arguments to filter Pages to count.
+     * @example
+     * // Count the number of Pages
+     * const count = await prisma.page.count({
+     *   where: {
+     *     // ... the filter for the Pages we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageCountArgs>(
+      args?: Subset<T, PageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Page.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageAggregateArgs>(args: Subset<T, PageAggregateArgs>): Prisma.PrismaPromise<GetPageAggregateType<T>>
+
+    /**
+     * Group by Page.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageGroupByArgs['orderBy'] }
+        : { orderBy?: PageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Page model
+   */
+  readonly fields: PageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Page.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    theme<T extends Page$themeArgs<ExtArgs> = {}>(args?: Subset<T, Page$themeArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    sections<T extends Page$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, Page$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany"> | Null>
+    PageVersion<T extends Page$PageVersionArgs<ExtArgs> = {}>(args?: Subset<T, Page$PageVersionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Page model
+   */ 
+  interface PageFieldRefs {
+    readonly id: FieldRef<"Page", 'Int'>
+    readonly title: FieldRef<"Page", 'String'>
+    readonly slug: FieldRef<"Page", 'String'>
+    readonly config: FieldRef<"Page", 'Json'>
+    readonly themeId: FieldRef<"Page", 'Int'>
+    readonly createdAt: FieldRef<"Page", 'DateTime'>
+    readonly updatedAt: FieldRef<"Page", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Page findUnique
+   */
+  export type PageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page findUniqueOrThrow
+   */
+  export type PageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page findFirst
+   */
+  export type PageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Pages.
+     */
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page findFirstOrThrow
+   */
+  export type PageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Pages.
+     */
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page findMany
+   */
+  export type PageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Pages to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page create
+   */
+  export type PageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Page.
+     */
+    data: XOR<PageCreateInput, PageUncheckedCreateInput>
+  }
+
+  /**
+   * Page createMany
+   */
+  export type PageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Pages.
+     */
+    data: PageCreateManyInput | PageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Page createManyAndReturn
+   */
+  export type PageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Pages.
+     */
+    data: PageCreateManyInput | PageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Page update
+   */
+  export type PageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Page.
+     */
+    data: XOR<PageUpdateInput, PageUncheckedUpdateInput>
+    /**
+     * Choose, which Page to update.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page updateMany
+   */
+  export type PageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Pages.
+     */
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyInput>
+    /**
+     * Filter which Pages to update
+     */
+    where?: PageWhereInput
+  }
+
+  /**
+   * Page upsert
+   */
+  export type PageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Page to update in case it exists.
+     */
+    where: PageWhereUniqueInput
+    /**
+     * In case the Page found by the `where` argument doesn't exist, create a new Page with this data.
+     */
+    create: XOR<PageCreateInput, PageUncheckedCreateInput>
+    /**
+     * In case the Page was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageUpdateInput, PageUncheckedUpdateInput>
+  }
+
+  /**
+   * Page delete
+   */
+  export type PageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter which Page to delete.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page deleteMany
+   */
+  export type PageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Pages to delete
+     */
+    where?: PageWhereInput
+  }
+
+  /**
+   * Page.theme
+   */
+  export type Page$themeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Theme
+     */
+    select?: ThemeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThemeInclude<ExtArgs> | null
+    where?: ThemeWhereInput
+  }
+
+  /**
+   * Page.sections
+   */
+  export type Page$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    where?: SectionWhereInput
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    cursor?: SectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionScalarFieldEnum | SectionScalarFieldEnum[]
+  }
+
+  /**
+   * Page.PageVersion
+   */
+  export type Page$PageVersionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    where?: PageVersionWhereInput
+    orderBy?: PageVersionOrderByWithRelationInput | PageVersionOrderByWithRelationInput[]
+    cursor?: PageVersionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageVersionScalarFieldEnum | PageVersionScalarFieldEnum[]
+  }
+
+  /**
+   * Page without action
+   */
+  export type PageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PageVersion
+   */
+
+  export type AggregatePageVersion = {
+    _count: PageVersionCountAggregateOutputType | null
+    _avg: PageVersionAvgAggregateOutputType | null
+    _sum: PageVersionSumAggregateOutputType | null
+    _min: PageVersionMinAggregateOutputType | null
+    _max: PageVersionMaxAggregateOutputType | null
+  }
+
+  export type PageVersionAvgAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    version: number | null
+  }
+
+  export type PageVersionSumAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    version: number | null
+  }
+
+  export type PageVersionMinAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    version: number | null
+    isPublished: boolean | null
+    createdAt: Date | null
+  }
+
+  export type PageVersionMaxAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    version: number | null
+    isPublished: boolean | null
+    createdAt: Date | null
+  }
+
+  export type PageVersionCountAggregateOutputType = {
+    id: number
+    pageId: number
+    version: number
+    config: number
+    sections: number
+    isPublished: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PageVersionAvgAggregateInputType = {
+    id?: true
+    pageId?: true
+    version?: true
+  }
+
+  export type PageVersionSumAggregateInputType = {
+    id?: true
+    pageId?: true
+    version?: true
+  }
+
+  export type PageVersionMinAggregateInputType = {
+    id?: true
+    pageId?: true
+    version?: true
+    isPublished?: true
+    createdAt?: true
+  }
+
+  export type PageVersionMaxAggregateInputType = {
+    id?: true
+    pageId?: true
+    version?: true
+    isPublished?: true
+    createdAt?: true
+  }
+
+  export type PageVersionCountAggregateInputType = {
+    id?: true
+    pageId?: true
+    version?: true
+    config?: true
+    sections?: true
+    isPublished?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PageVersionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageVersion to aggregate.
+     */
+    where?: PageVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageVersions to fetch.
+     */
+    orderBy?: PageVersionOrderByWithRelationInput | PageVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PageVersions
+    **/
+    _count?: true | PageVersionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PageVersionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PageVersionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageVersionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageVersionMaxAggregateInputType
+  }
+
+  export type GetPageVersionAggregateType<T extends PageVersionAggregateArgs> = {
+        [P in keyof T & keyof AggregatePageVersion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePageVersion[P]>
+      : GetScalarType<T[P], AggregatePageVersion[P]>
+  }
+
+
+
+
+  export type PageVersionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageVersionWhereInput
+    orderBy?: PageVersionOrderByWithAggregationInput | PageVersionOrderByWithAggregationInput[]
+    by: PageVersionScalarFieldEnum[] | PageVersionScalarFieldEnum
+    having?: PageVersionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageVersionCountAggregateInputType | true
+    _avg?: PageVersionAvgAggregateInputType
+    _sum?: PageVersionSumAggregateInputType
+    _min?: PageVersionMinAggregateInputType
+    _max?: PageVersionMaxAggregateInputType
+  }
+
+  export type PageVersionGroupByOutputType = {
+    id: number
+    pageId: number
+    version: number
+    config: JsonValue | null
+    sections: JsonValue | null
+    isPublished: boolean
+    createdAt: Date
+    _count: PageVersionCountAggregateOutputType | null
+    _avg: PageVersionAvgAggregateOutputType | null
+    _sum: PageVersionSumAggregateOutputType | null
+    _min: PageVersionMinAggregateOutputType | null
+    _max: PageVersionMaxAggregateOutputType | null
+  }
+
+  type GetPageVersionGroupByPayload<T extends PageVersionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageVersionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageVersionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageVersionGroupByOutputType[P]>
+            : GetScalarType<T[P], PageVersionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageVersionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pageId?: boolean
+    version?: boolean
+    config?: boolean
+    sections?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageVersion"]>
+
+  export type PageVersionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pageId?: boolean
+    version?: boolean
+    config?: boolean
+    sections?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageVersion"]>
+
+  export type PageVersionSelectScalar = {
+    id?: boolean
+    pageId?: boolean
+    version?: boolean
+    config?: boolean
+    sections?: boolean
+    isPublished?: boolean
+    createdAt?: boolean
+  }
+
+  export type PageVersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }
+  export type PageVersionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }
+
+  export type $PageVersionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PageVersion"
+    objects: {
+      page: Prisma.$PagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      pageId: number
+      version: number
+      config: Prisma.JsonValue | null
+      sections: Prisma.JsonValue | null
+      isPublished: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["pageVersion"]>
+    composites: {}
+  }
+
+  type PageVersionGetPayload<S extends boolean | null | undefined | PageVersionDefaultArgs> = $Result.GetResult<Prisma.$PageVersionPayload, S>
+
+  type PageVersionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PageVersionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PageVersionCountAggregateInputType | true
+    }
+
+  export interface PageVersionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PageVersion'], meta: { name: 'PageVersion' } }
+    /**
+     * Find zero or one PageVersion that matches the filter.
+     * @param {PageVersionFindUniqueArgs} args - Arguments to find a PageVersion
+     * @example
+     * // Get one PageVersion
+     * const pageVersion = await prisma.pageVersion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageVersionFindUniqueArgs>(args: SelectSubset<T, PageVersionFindUniqueArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one PageVersion that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PageVersionFindUniqueOrThrowArgs} args - Arguments to find a PageVersion
+     * @example
+     * // Get one PageVersion
+     * const pageVersion = await prisma.pageVersion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageVersionFindUniqueOrThrowArgs>(args: SelectSubset<T, PageVersionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first PageVersion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionFindFirstArgs} args - Arguments to find a PageVersion
+     * @example
+     * // Get one PageVersion
+     * const pageVersion = await prisma.pageVersion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageVersionFindFirstArgs>(args?: SelectSubset<T, PageVersionFindFirstArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first PageVersion that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionFindFirstOrThrowArgs} args - Arguments to find a PageVersion
+     * @example
+     * // Get one PageVersion
+     * const pageVersion = await prisma.pageVersion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageVersionFindFirstOrThrowArgs>(args?: SelectSubset<T, PageVersionFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more PageVersions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PageVersions
+     * const pageVersions = await prisma.pageVersion.findMany()
+     * 
+     * // Get first 10 PageVersions
+     * const pageVersions = await prisma.pageVersion.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageVersionWithIdOnly = await prisma.pageVersion.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageVersionFindManyArgs>(args?: SelectSubset<T, PageVersionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a PageVersion.
+     * @param {PageVersionCreateArgs} args - Arguments to create a PageVersion.
+     * @example
+     * // Create one PageVersion
+     * const PageVersion = await prisma.pageVersion.create({
+     *   data: {
+     *     // ... data to create a PageVersion
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageVersionCreateArgs>(args: SelectSubset<T, PageVersionCreateArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many PageVersions.
+     * @param {PageVersionCreateManyArgs} args - Arguments to create many PageVersions.
+     * @example
+     * // Create many PageVersions
+     * const pageVersion = await prisma.pageVersion.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageVersionCreateManyArgs>(args?: SelectSubset<T, PageVersionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PageVersions and returns the data saved in the database.
+     * @param {PageVersionCreateManyAndReturnArgs} args - Arguments to create many PageVersions.
+     * @example
+     * // Create many PageVersions
+     * const pageVersion = await prisma.pageVersion.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PageVersions and only return the `id`
+     * const pageVersionWithIdOnly = await prisma.pageVersion.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageVersionCreateManyAndReturnArgs>(args?: SelectSubset<T, PageVersionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a PageVersion.
+     * @param {PageVersionDeleteArgs} args - Arguments to delete one PageVersion.
+     * @example
+     * // Delete one PageVersion
+     * const PageVersion = await prisma.pageVersion.delete({
+     *   where: {
+     *     // ... filter to delete one PageVersion
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageVersionDeleteArgs>(args: SelectSubset<T, PageVersionDeleteArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one PageVersion.
+     * @param {PageVersionUpdateArgs} args - Arguments to update one PageVersion.
+     * @example
+     * // Update one PageVersion
+     * const pageVersion = await prisma.pageVersion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageVersionUpdateArgs>(args: SelectSubset<T, PageVersionUpdateArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more PageVersions.
+     * @param {PageVersionDeleteManyArgs} args - Arguments to filter PageVersions to delete.
+     * @example
+     * // Delete a few PageVersions
+     * const { count } = await prisma.pageVersion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageVersionDeleteManyArgs>(args?: SelectSubset<T, PageVersionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PageVersions
+     * const pageVersion = await prisma.pageVersion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageVersionUpdateManyArgs>(args: SelectSubset<T, PageVersionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PageVersion.
+     * @param {PageVersionUpsertArgs} args - Arguments to update or create a PageVersion.
+     * @example
+     * // Update or create a PageVersion
+     * const pageVersion = await prisma.pageVersion.upsert({
+     *   create: {
+     *     // ... data to create a PageVersion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PageVersion we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageVersionUpsertArgs>(args: SelectSubset<T, PageVersionUpsertArgs<ExtArgs>>): Prisma__PageVersionClient<$Result.GetResult<Prisma.$PageVersionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of PageVersions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionCountArgs} args - Arguments to filter PageVersions to count.
+     * @example
+     * // Count the number of PageVersions
+     * const count = await prisma.pageVersion.count({
+     *   where: {
+     *     // ... the filter for the PageVersions we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageVersionCountArgs>(
+      args?: Subset<T, PageVersionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageVersionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PageVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageVersionAggregateArgs>(args: Subset<T, PageVersionAggregateArgs>): Prisma.PrismaPromise<GetPageVersionAggregateType<T>>
+
+    /**
+     * Group by PageVersion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageVersionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageVersionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageVersionGroupByArgs['orderBy'] }
+        : { orderBy?: PageVersionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageVersionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageVersionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PageVersion model
+   */
+  readonly fields: PageVersionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PageVersion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageVersionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    page<T extends PageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PageDefaultArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PageVersion model
+   */ 
+  interface PageVersionFieldRefs {
+    readonly id: FieldRef<"PageVersion", 'Int'>
+    readonly pageId: FieldRef<"PageVersion", 'Int'>
+    readonly version: FieldRef<"PageVersion", 'Int'>
+    readonly config: FieldRef<"PageVersion", 'Json'>
+    readonly sections: FieldRef<"PageVersion", 'Json'>
+    readonly isPublished: FieldRef<"PageVersion", 'Boolean'>
+    readonly createdAt: FieldRef<"PageVersion", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PageVersion findUnique
+   */
+  export type PageVersionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which PageVersion to fetch.
+     */
+    where: PageVersionWhereUniqueInput
+  }
+
+  /**
+   * PageVersion findUniqueOrThrow
+   */
+  export type PageVersionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which PageVersion to fetch.
+     */
+    where: PageVersionWhereUniqueInput
+  }
+
+  /**
+   * PageVersion findFirst
+   */
+  export type PageVersionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which PageVersion to fetch.
+     */
+    where?: PageVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageVersions to fetch.
+     */
+    orderBy?: PageVersionOrderByWithRelationInput | PageVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageVersions.
+     */
+    cursor?: PageVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageVersions.
+     */
+    distinct?: PageVersionScalarFieldEnum | PageVersionScalarFieldEnum[]
+  }
+
+  /**
+   * PageVersion findFirstOrThrow
+   */
+  export type PageVersionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which PageVersion to fetch.
+     */
+    where?: PageVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageVersions to fetch.
+     */
+    orderBy?: PageVersionOrderByWithRelationInput | PageVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageVersions.
+     */
+    cursor?: PageVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageVersions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageVersions.
+     */
+    distinct?: PageVersionScalarFieldEnum | PageVersionScalarFieldEnum[]
+  }
+
+  /**
+   * PageVersion findMany
+   */
+  export type PageVersionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter, which PageVersions to fetch.
+     */
+    where?: PageVersionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageVersions to fetch.
+     */
+    orderBy?: PageVersionOrderByWithRelationInput | PageVersionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PageVersions.
+     */
+    cursor?: PageVersionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageVersions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageVersions.
+     */
+    skip?: number
+    distinct?: PageVersionScalarFieldEnum | PageVersionScalarFieldEnum[]
+  }
+
+  /**
+   * PageVersion create
+   */
+  export type PageVersionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PageVersion.
+     */
+    data: XOR<PageVersionCreateInput, PageVersionUncheckedCreateInput>
+  }
+
+  /**
+   * PageVersion createMany
+   */
+  export type PageVersionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PageVersions.
+     */
+    data: PageVersionCreateManyInput | PageVersionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageVersion createManyAndReturn
+   */
+  export type PageVersionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many PageVersions.
+     */
+    data: PageVersionCreateManyInput | PageVersionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PageVersion update
+   */
+  export type PageVersionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PageVersion.
+     */
+    data: XOR<PageVersionUpdateInput, PageVersionUncheckedUpdateInput>
+    /**
+     * Choose, which PageVersion to update.
+     */
+    where: PageVersionWhereUniqueInput
+  }
+
+  /**
+   * PageVersion updateMany
+   */
+  export type PageVersionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PageVersions.
+     */
+    data: XOR<PageVersionUpdateManyMutationInput, PageVersionUncheckedUpdateManyInput>
+    /**
+     * Filter which PageVersions to update
+     */
+    where?: PageVersionWhereInput
+  }
+
+  /**
+   * PageVersion upsert
+   */
+  export type PageVersionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PageVersion to update in case it exists.
+     */
+    where: PageVersionWhereUniqueInput
+    /**
+     * In case the PageVersion found by the `where` argument doesn't exist, create a new PageVersion with this data.
+     */
+    create: XOR<PageVersionCreateInput, PageVersionUncheckedCreateInput>
+    /**
+     * In case the PageVersion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageVersionUpdateInput, PageVersionUncheckedUpdateInput>
+  }
+
+  /**
+   * PageVersion delete
+   */
+  export type PageVersionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+    /**
+     * Filter which PageVersion to delete.
+     */
+    where: PageVersionWhereUniqueInput
+  }
+
+  /**
+   * PageVersion deleteMany
+   */
+  export type PageVersionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageVersions to delete
+     */
+    where?: PageVersionWhereInput
+  }
+
+  /**
+   * PageVersion without action
+   */
+  export type PageVersionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageVersion
+     */
+    select?: PageVersionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageVersionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Section
+   */
+
+  export type AggregateSection = {
+    _count: SectionCountAggregateOutputType | null
+    _avg: SectionAvgAggregateOutputType | null
+    _sum: SectionSumAggregateOutputType | null
+    _min: SectionMinAggregateOutputType | null
+    _max: SectionMaxAggregateOutputType | null
+  }
+
+  export type SectionAvgAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    order: number | null
+  }
+
+  export type SectionSumAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    order: number | null
+  }
+
+  export type SectionMinAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    type: string | null
+    title: string | null
+    order: number | null
+    isGlobal: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SectionMaxAggregateOutputType = {
+    id: number | null
+    pageId: number | null
+    type: string | null
+    title: string | null
+    order: number | null
+    isGlobal: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SectionCountAggregateOutputType = {
+    id: number
+    pageId: number
+    type: number
+    title: number
+    order: number
+    isGlobal: number
+    config: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SectionAvgAggregateInputType = {
+    id?: true
+    pageId?: true
+    order?: true
+  }
+
+  export type SectionSumAggregateInputType = {
+    id?: true
+    pageId?: true
+    order?: true
+  }
+
+  export type SectionMinAggregateInputType = {
+    id?: true
+    pageId?: true
+    type?: true
+    title?: true
+    order?: true
+    isGlobal?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SectionMaxAggregateInputType = {
+    id?: true
+    pageId?: true
+    type?: true
+    title?: true
+    order?: true
+    isGlobal?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SectionCountAggregateInputType = {
+    id?: true
+    pageId?: true
+    type?: true
+    title?: true
+    order?: true
+    isGlobal?: true
+    config?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Section to aggregate.
+     */
+    where?: SectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sections to fetch.
+     */
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Sections
+    **/
+    _count?: true | SectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectionMaxAggregateInputType
+  }
+
+  export type GetSectionAggregateType<T extends SectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSection[P]>
+      : GetScalarType<T[P], AggregateSection[P]>
+  }
+
+
+
+
+  export type SectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionWhereInput
+    orderBy?: SectionOrderByWithAggregationInput | SectionOrderByWithAggregationInput[]
+    by: SectionScalarFieldEnum[] | SectionScalarFieldEnum
+    having?: SectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectionCountAggregateInputType | true
+    _avg?: SectionAvgAggregateInputType
+    _sum?: SectionSumAggregateInputType
+    _min?: SectionMinAggregateInputType
+    _max?: SectionMaxAggregateInputType
+  }
+
+  export type SectionGroupByOutputType = {
+    id: number
+    pageId: number | null
+    type: string
+    title: string | null
+    order: number
+    isGlobal: boolean
+    config: JsonValue | null
+    content: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: SectionCountAggregateOutputType | null
+    _avg: SectionAvgAggregateOutputType | null
+    _sum: SectionSumAggregateOutputType | null
+    _min: SectionMinAggregateOutputType | null
+    _max: SectionMaxAggregateOutputType | null
+  }
+
+  type GetSectionGroupByPayload<T extends SectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectionGroupByOutputType[P]>
+            : GetScalarType<T[P], SectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pageId?: boolean
+    type?: boolean
+    title?: boolean
+    order?: boolean
+    isGlobal?: boolean
+    config?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    page?: boolean | Section$pageArgs<ExtArgs>
+  }, ExtArgs["result"]["section"]>
+
+  export type SectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pageId?: boolean
+    type?: boolean
+    title?: boolean
+    order?: boolean
+    isGlobal?: boolean
+    config?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    page?: boolean | Section$pageArgs<ExtArgs>
+  }, ExtArgs["result"]["section"]>
+
+  export type SectionSelectScalar = {
+    id?: boolean
+    pageId?: boolean
+    type?: boolean
+    title?: boolean
+    order?: boolean
+    isGlobal?: boolean
+    config?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | Section$pageArgs<ExtArgs>
+  }
+  export type SectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | Section$pageArgs<ExtArgs>
+  }
+
+  export type $SectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Section"
+    objects: {
+      page: Prisma.$PagePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      pageId: number | null
+      type: string
+      title: string | null
+      order: number
+      isGlobal: boolean
+      config: Prisma.JsonValue | null
+      content: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["section"]>
+    composites: {}
+  }
+
+  type SectionGetPayload<S extends boolean | null | undefined | SectionDefaultArgs> = $Result.GetResult<Prisma.$SectionPayload, S>
+
+  type SectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SectionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SectionCountAggregateInputType | true
+    }
+
+  export interface SectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Section'], meta: { name: 'Section' } }
+    /**
+     * Find zero or one Section that matches the filter.
+     * @param {SectionFindUniqueArgs} args - Arguments to find a Section
+     * @example
+     * // Get one Section
+     * const section = await prisma.section.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SectionFindUniqueArgs>(args: SelectSubset<T, SectionFindUniqueArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Section that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SectionFindUniqueOrThrowArgs} args - Arguments to find a Section
+     * @example
+     * // Get one Section
+     * const section = await prisma.section.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SectionFindUniqueOrThrowArgs>(args: SelectSubset<T, SectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Section that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionFindFirstArgs} args - Arguments to find a Section
+     * @example
+     * // Get one Section
+     * const section = await prisma.section.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SectionFindFirstArgs>(args?: SelectSubset<T, SectionFindFirstArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Section that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionFindFirstOrThrowArgs} args - Arguments to find a Section
+     * @example
+     * // Get one Section
+     * const section = await prisma.section.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SectionFindFirstOrThrowArgs>(args?: SelectSubset<T, SectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Sections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sections
+     * const sections = await prisma.section.findMany()
+     * 
+     * // Get first 10 Sections
+     * const sections = await prisma.section.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectionWithIdOnly = await prisma.section.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SectionFindManyArgs>(args?: SelectSubset<T, SectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Section.
+     * @param {SectionCreateArgs} args - Arguments to create a Section.
+     * @example
+     * // Create one Section
+     * const Section = await prisma.section.create({
+     *   data: {
+     *     // ... data to create a Section
+     *   }
+     * })
+     * 
+     */
+    create<T extends SectionCreateArgs>(args: SelectSubset<T, SectionCreateArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Sections.
+     * @param {SectionCreateManyArgs} args - Arguments to create many Sections.
+     * @example
+     * // Create many Sections
+     * const section = await prisma.section.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SectionCreateManyArgs>(args?: SelectSubset<T, SectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sections and returns the data saved in the database.
+     * @param {SectionCreateManyAndReturnArgs} args - Arguments to create many Sections.
+     * @example
+     * // Create many Sections
+     * const section = await prisma.section.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sections and only return the `id`
+     * const sectionWithIdOnly = await prisma.section.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SectionCreateManyAndReturnArgs>(args?: SelectSubset<T, SectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Section.
+     * @param {SectionDeleteArgs} args - Arguments to delete one Section.
+     * @example
+     * // Delete one Section
+     * const Section = await prisma.section.delete({
+     *   where: {
+     *     // ... filter to delete one Section
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SectionDeleteArgs>(args: SelectSubset<T, SectionDeleteArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Section.
+     * @param {SectionUpdateArgs} args - Arguments to update one Section.
+     * @example
+     * // Update one Section
+     * const section = await prisma.section.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SectionUpdateArgs>(args: SelectSubset<T, SectionUpdateArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Sections.
+     * @param {SectionDeleteManyArgs} args - Arguments to filter Sections to delete.
+     * @example
+     * // Delete a few Sections
+     * const { count } = await prisma.section.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SectionDeleteManyArgs>(args?: SelectSubset<T, SectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sections
+     * const section = await prisma.section.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SectionUpdateManyArgs>(args: SelectSubset<T, SectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Section.
+     * @param {SectionUpsertArgs} args - Arguments to update or create a Section.
+     * @example
+     * // Update or create a Section
+     * const section = await prisma.section.upsert({
+     *   create: {
+     *     // ... data to create a Section
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Section we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SectionUpsertArgs>(args: SelectSubset<T, SectionUpsertArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Sections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionCountArgs} args - Arguments to filter Sections to count.
+     * @example
+     * // Count the number of Sections
+     * const count = await prisma.section.count({
+     *   where: {
+     *     // ... the filter for the Sections we want to count
+     *   }
+     * })
+    **/
+    count<T extends SectionCountArgs>(
+      args?: Subset<T, SectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Section.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectionAggregateArgs>(args: Subset<T, SectionAggregateArgs>): Prisma.PrismaPromise<GetSectionAggregateType<T>>
+
+    /**
+     * Group by Section.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SectionGroupByArgs['orderBy'] }
+        : { orderBy?: SectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Section model
+   */
+  readonly fields: SectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Section.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    page<T extends Section$pageArgs<ExtArgs> = {}>(args?: Subset<T, Section$pageArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Section model
+   */ 
+  interface SectionFieldRefs {
+    readonly id: FieldRef<"Section", 'Int'>
+    readonly pageId: FieldRef<"Section", 'Int'>
+    readonly type: FieldRef<"Section", 'String'>
+    readonly title: FieldRef<"Section", 'String'>
+    readonly order: FieldRef<"Section", 'Int'>
+    readonly isGlobal: FieldRef<"Section", 'Boolean'>
+    readonly config: FieldRef<"Section", 'Json'>
+    readonly content: FieldRef<"Section", 'Json'>
+    readonly createdAt: FieldRef<"Section", 'DateTime'>
+    readonly updatedAt: FieldRef<"Section", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Section findUnique
+   */
+  export type SectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Section to fetch.
+     */
+    where: SectionWhereUniqueInput
+  }
+
+  /**
+   * Section findUniqueOrThrow
+   */
+  export type SectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Section to fetch.
+     */
+    where: SectionWhereUniqueInput
+  }
+
+  /**
+   * Section findFirst
+   */
+  export type SectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Section to fetch.
+     */
+    where?: SectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sections to fetch.
+     */
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sections.
+     */
+    cursor?: SectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sections.
+     */
+    distinct?: SectionScalarFieldEnum | SectionScalarFieldEnum[]
+  }
+
+  /**
+   * Section findFirstOrThrow
+   */
+  export type SectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Section to fetch.
+     */
+    where?: SectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sections to fetch.
+     */
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sections.
+     */
+    cursor?: SectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sections.
+     */
+    distinct?: SectionScalarFieldEnum | SectionScalarFieldEnum[]
+  }
+
+  /**
+   * Section findMany
+   */
+  export type SectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter, which Sections to fetch.
+     */
+    where?: SectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sections to fetch.
+     */
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Sections.
+     */
+    cursor?: SectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sections.
+     */
+    skip?: number
+    distinct?: SectionScalarFieldEnum | SectionScalarFieldEnum[]
+  }
+
+  /**
+   * Section create
+   */
+  export type SectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Section.
+     */
+    data: XOR<SectionCreateInput, SectionUncheckedCreateInput>
+  }
+
+  /**
+   * Section createMany
+   */
+  export type SectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Sections.
+     */
+    data: SectionCreateManyInput | SectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Section createManyAndReturn
+   */
+  export type SectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Sections.
+     */
+    data: SectionCreateManyInput | SectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Section update
+   */
+  export type SectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Section.
+     */
+    data: XOR<SectionUpdateInput, SectionUncheckedUpdateInput>
+    /**
+     * Choose, which Section to update.
+     */
+    where: SectionWhereUniqueInput
+  }
+
+  /**
+   * Section updateMany
+   */
+  export type SectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Sections.
+     */
+    data: XOR<SectionUpdateManyMutationInput, SectionUncheckedUpdateManyInput>
+    /**
+     * Filter which Sections to update
+     */
+    where?: SectionWhereInput
+  }
+
+  /**
+   * Section upsert
+   */
+  export type SectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Section to update in case it exists.
+     */
+    where: SectionWhereUniqueInput
+    /**
+     * In case the Section found by the `where` argument doesn't exist, create a new Section with this data.
+     */
+    create: XOR<SectionCreateInput, SectionUncheckedCreateInput>
+    /**
+     * In case the Section was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SectionUpdateInput, SectionUncheckedUpdateInput>
+  }
+
+  /**
+   * Section delete
+   */
+  export type SectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    /**
+     * Filter which Section to delete.
+     */
+    where: SectionWhereUniqueInput
+  }
+
+  /**
+   * Section deleteMany
+   */
+  export type SectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Sections to delete
+     */
+    where?: SectionWhereInput
+  }
+
+  /**
+   * Section.page
+   */
+  export type Section$pageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+  }
+
+  /**
+   * Section without action
+   */
+  export type SectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Log
    */
 
@@ -21341,6 +26957,73 @@ export namespace Prisma {
   export type CollectionProductScalarFieldEnum = (typeof CollectionProductScalarFieldEnum)[keyof typeof CollectionProductScalarFieldEnum]
 
 
+  export const ThemeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    currentVersion: 'currentVersion',
+    templateUrl: 'templateUrl',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ThemeScalarFieldEnum = (typeof ThemeScalarFieldEnum)[keyof typeof ThemeScalarFieldEnum]
+
+
+  export const ThemeVersionScalarFieldEnum: {
+    id: 'id',
+    themeId: 'themeId',
+    version: 'version',
+    config: 'config',
+    isDefault: 'isDefault',
+    createdAt: 'createdAt'
+  };
+
+  export type ThemeVersionScalarFieldEnum = (typeof ThemeVersionScalarFieldEnum)[keyof typeof ThemeVersionScalarFieldEnum]
+
+
+  export const PageScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    slug: 'slug',
+    config: 'config',
+    themeId: 'themeId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PageScalarFieldEnum = (typeof PageScalarFieldEnum)[keyof typeof PageScalarFieldEnum]
+
+
+  export const PageVersionScalarFieldEnum: {
+    id: 'id',
+    pageId: 'pageId',
+    version: 'version',
+    config: 'config',
+    sections: 'sections',
+    isPublished: 'isPublished',
+    createdAt: 'createdAt'
+  };
+
+  export type PageVersionScalarFieldEnum = (typeof PageVersionScalarFieldEnum)[keyof typeof PageVersionScalarFieldEnum]
+
+
+  export const SectionScalarFieldEnum: {
+    id: 'id',
+    pageId: 'pageId',
+    type: 'type',
+    title: 'title',
+    order: 'order',
+    isGlobal: 'isGlobal',
+    config: 'config',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SectionScalarFieldEnum = (typeof SectionScalarFieldEnum)[keyof typeof SectionScalarFieldEnum]
+
+
   export const LogScalarFieldEnum: {
     id: 'id',
     level: 'level',
@@ -21361,6 +27044,13 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const NullableJsonNullValueInput: {
@@ -21493,6 +27183,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
    * Reference to a field of type 'LogLevel'
    */
   export type EnumLogLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LogLevel'>
@@ -21503,13 +27200,6 @@ export namespace Prisma {
    * Reference to a field of type 'LogLevel[]'
    */
   export type ListEnumLogLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LogLevel[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
   /**
    * Deep Input Types
@@ -21543,17 +27233,17 @@ export namespace Prisma {
 
   export type StoreSettingsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    storeId?: string
     AND?: StoreSettingsWhereInput | StoreSettingsWhereInput[]
     OR?: StoreSettingsWhereInput[]
     NOT?: StoreSettingsWhereInput | StoreSettingsWhereInput[]
+    storeId?: StringFilter<"StoreSettings"> | string
     storeName?: StringFilter<"StoreSettings"> | string
     currency?: StringNullableFilter<"StoreSettings"> | string | null
     timezone?: StringNullableFilter<"StoreSettings"> | string | null
     logoUrl?: StringNullableFilter<"StoreSettings"> | string | null
     createdAt?: DateTimeFilter<"StoreSettings"> | Date | string
     updatedAt?: DateTimeFilter<"StoreSettings"> | Date | string
-  }, "id" | "storeId">
+  }, "id">
 
   export type StoreSettingsOrderByWithAggregationInput = {
     id?: SortOrder
@@ -22707,6 +28397,362 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"CollectionProduct"> | number
     collectionId?: IntWithAggregatesFilter<"CollectionProduct"> | number
     productId?: IntWithAggregatesFilter<"CollectionProduct"> | number
+  }
+
+  export type ThemeWhereInput = {
+    AND?: ThemeWhereInput | ThemeWhereInput[]
+    OR?: ThemeWhereInput[]
+    NOT?: ThemeWhereInput | ThemeWhereInput[]
+    id?: IntFilter<"Theme"> | number
+    name?: StringFilter<"Theme"> | string
+    currentVersion?: IntFilter<"Theme"> | number
+    templateUrl?: StringNullableFilter<"Theme"> | string | null
+    isActive?: BoolFilter<"Theme"> | boolean
+    createdAt?: DateTimeFilter<"Theme"> | Date | string
+    updatedAt?: DateTimeFilter<"Theme"> | Date | string
+    ThemeVersion?: ThemeVersionListRelationFilter
+    pages?: PageListRelationFilter
+  }
+
+  export type ThemeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    currentVersion?: SortOrder
+    templateUrl?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ThemeVersion?: ThemeVersionOrderByRelationAggregateInput
+    pages?: PageOrderByRelationAggregateInput
+  }
+
+  export type ThemeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ThemeWhereInput | ThemeWhereInput[]
+    OR?: ThemeWhereInput[]
+    NOT?: ThemeWhereInput | ThemeWhereInput[]
+    name?: StringFilter<"Theme"> | string
+    currentVersion?: IntFilter<"Theme"> | number
+    templateUrl?: StringNullableFilter<"Theme"> | string | null
+    isActive?: BoolFilter<"Theme"> | boolean
+    createdAt?: DateTimeFilter<"Theme"> | Date | string
+    updatedAt?: DateTimeFilter<"Theme"> | Date | string
+    ThemeVersion?: ThemeVersionListRelationFilter
+    pages?: PageListRelationFilter
+  }, "id">
+
+  export type ThemeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    currentVersion?: SortOrder
+    templateUrl?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ThemeCountOrderByAggregateInput
+    _avg?: ThemeAvgOrderByAggregateInput
+    _max?: ThemeMaxOrderByAggregateInput
+    _min?: ThemeMinOrderByAggregateInput
+    _sum?: ThemeSumOrderByAggregateInput
+  }
+
+  export type ThemeScalarWhereWithAggregatesInput = {
+    AND?: ThemeScalarWhereWithAggregatesInput | ThemeScalarWhereWithAggregatesInput[]
+    OR?: ThemeScalarWhereWithAggregatesInput[]
+    NOT?: ThemeScalarWhereWithAggregatesInput | ThemeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Theme"> | number
+    name?: StringWithAggregatesFilter<"Theme"> | string
+    currentVersion?: IntWithAggregatesFilter<"Theme"> | number
+    templateUrl?: StringNullableWithAggregatesFilter<"Theme"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Theme"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Theme"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Theme"> | Date | string
+  }
+
+  export type ThemeVersionWhereInput = {
+    AND?: ThemeVersionWhereInput | ThemeVersionWhereInput[]
+    OR?: ThemeVersionWhereInput[]
+    NOT?: ThemeVersionWhereInput | ThemeVersionWhereInput[]
+    id?: IntFilter<"ThemeVersion"> | number
+    themeId?: IntFilter<"ThemeVersion"> | number
+    version?: IntFilter<"ThemeVersion"> | number
+    config?: JsonFilter<"ThemeVersion">
+    isDefault?: BoolFilter<"ThemeVersion"> | boolean
+    createdAt?: DateTimeFilter<"ThemeVersion"> | Date | string
+    theme?: XOR<ThemeScalarRelationFilter, ThemeWhereInput>
+  }
+
+  export type ThemeVersionOrderByWithRelationInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+    config?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    theme?: ThemeOrderByWithRelationInput
+  }
+
+  export type ThemeVersionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    themeId_version?: ThemeVersionThemeIdVersionCompoundUniqueInput
+    AND?: ThemeVersionWhereInput | ThemeVersionWhereInput[]
+    OR?: ThemeVersionWhereInput[]
+    NOT?: ThemeVersionWhereInput | ThemeVersionWhereInput[]
+    themeId?: IntFilter<"ThemeVersion"> | number
+    version?: IntFilter<"ThemeVersion"> | number
+    config?: JsonFilter<"ThemeVersion">
+    isDefault?: BoolFilter<"ThemeVersion"> | boolean
+    createdAt?: DateTimeFilter<"ThemeVersion"> | Date | string
+    theme?: XOR<ThemeScalarRelationFilter, ThemeWhereInput>
+  }, "id" | "themeId_version">
+
+  export type ThemeVersionOrderByWithAggregationInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+    config?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+    _count?: ThemeVersionCountOrderByAggregateInput
+    _avg?: ThemeVersionAvgOrderByAggregateInput
+    _max?: ThemeVersionMaxOrderByAggregateInput
+    _min?: ThemeVersionMinOrderByAggregateInput
+    _sum?: ThemeVersionSumOrderByAggregateInput
+  }
+
+  export type ThemeVersionScalarWhereWithAggregatesInput = {
+    AND?: ThemeVersionScalarWhereWithAggregatesInput | ThemeVersionScalarWhereWithAggregatesInput[]
+    OR?: ThemeVersionScalarWhereWithAggregatesInput[]
+    NOT?: ThemeVersionScalarWhereWithAggregatesInput | ThemeVersionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ThemeVersion"> | number
+    themeId?: IntWithAggregatesFilter<"ThemeVersion"> | number
+    version?: IntWithAggregatesFilter<"ThemeVersion"> | number
+    config?: JsonWithAggregatesFilter<"ThemeVersion">
+    isDefault?: BoolWithAggregatesFilter<"ThemeVersion"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ThemeVersion"> | Date | string
+  }
+
+  export type PageWhereInput = {
+    AND?: PageWhereInput | PageWhereInput[]
+    OR?: PageWhereInput[]
+    NOT?: PageWhereInput | PageWhereInput[]
+    id?: IntFilter<"Page"> | number
+    title?: StringFilter<"Page"> | string
+    slug?: StringFilter<"Page"> | string
+    config?: JsonNullableFilter<"Page">
+    themeId?: IntNullableFilter<"Page"> | number | null
+    createdAt?: DateTimeFilter<"Page"> | Date | string
+    updatedAt?: DateTimeFilter<"Page"> | Date | string
+    theme?: XOR<ThemeNullableScalarRelationFilter, ThemeWhereInput> | null
+    sections?: SectionListRelationFilter
+    PageVersion?: PageVersionListRelationFilter
+  }
+
+  export type PageOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    config?: SortOrderInput | SortOrder
+    themeId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    theme?: ThemeOrderByWithRelationInput
+    sections?: SectionOrderByRelationAggregateInput
+    PageVersion?: PageVersionOrderByRelationAggregateInput
+  }
+
+  export type PageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    slug?: string
+    AND?: PageWhereInput | PageWhereInput[]
+    OR?: PageWhereInput[]
+    NOT?: PageWhereInput | PageWhereInput[]
+    title?: StringFilter<"Page"> | string
+    config?: JsonNullableFilter<"Page">
+    themeId?: IntNullableFilter<"Page"> | number | null
+    createdAt?: DateTimeFilter<"Page"> | Date | string
+    updatedAt?: DateTimeFilter<"Page"> | Date | string
+    theme?: XOR<ThemeNullableScalarRelationFilter, ThemeWhereInput> | null
+    sections?: SectionListRelationFilter
+    PageVersion?: PageVersionListRelationFilter
+  }, "id" | "slug">
+
+  export type PageOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    config?: SortOrderInput | SortOrder
+    themeId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PageCountOrderByAggregateInput
+    _avg?: PageAvgOrderByAggregateInput
+    _max?: PageMaxOrderByAggregateInput
+    _min?: PageMinOrderByAggregateInput
+    _sum?: PageSumOrderByAggregateInput
+  }
+
+  export type PageScalarWhereWithAggregatesInput = {
+    AND?: PageScalarWhereWithAggregatesInput | PageScalarWhereWithAggregatesInput[]
+    OR?: PageScalarWhereWithAggregatesInput[]
+    NOT?: PageScalarWhereWithAggregatesInput | PageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Page"> | number
+    title?: StringWithAggregatesFilter<"Page"> | string
+    slug?: StringWithAggregatesFilter<"Page"> | string
+    config?: JsonNullableWithAggregatesFilter<"Page">
+    themeId?: IntNullableWithAggregatesFilter<"Page"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"Page"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Page"> | Date | string
+  }
+
+  export type PageVersionWhereInput = {
+    AND?: PageVersionWhereInput | PageVersionWhereInput[]
+    OR?: PageVersionWhereInput[]
+    NOT?: PageVersionWhereInput | PageVersionWhereInput[]
+    id?: IntFilter<"PageVersion"> | number
+    pageId?: IntFilter<"PageVersion"> | number
+    version?: IntFilter<"PageVersion"> | number
+    config?: JsonNullableFilter<"PageVersion">
+    sections?: JsonNullableFilter<"PageVersion">
+    isPublished?: BoolFilter<"PageVersion"> | boolean
+    createdAt?: DateTimeFilter<"PageVersion"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+  }
+
+  export type PageVersionOrderByWithRelationInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+    config?: SortOrderInput | SortOrder
+    sections?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    page?: PageOrderByWithRelationInput
+  }
+
+  export type PageVersionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    pageId_version?: PageVersionPageIdVersionCompoundUniqueInput
+    AND?: PageVersionWhereInput | PageVersionWhereInput[]
+    OR?: PageVersionWhereInput[]
+    NOT?: PageVersionWhereInput | PageVersionWhereInput[]
+    pageId?: IntFilter<"PageVersion"> | number
+    version?: IntFilter<"PageVersion"> | number
+    config?: JsonNullableFilter<"PageVersion">
+    sections?: JsonNullableFilter<"PageVersion">
+    isPublished?: BoolFilter<"PageVersion"> | boolean
+    createdAt?: DateTimeFilter<"PageVersion"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+  }, "id" | "pageId_version">
+
+  export type PageVersionOrderByWithAggregationInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+    config?: SortOrderInput | SortOrder
+    sections?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+    _count?: PageVersionCountOrderByAggregateInput
+    _avg?: PageVersionAvgOrderByAggregateInput
+    _max?: PageVersionMaxOrderByAggregateInput
+    _min?: PageVersionMinOrderByAggregateInput
+    _sum?: PageVersionSumOrderByAggregateInput
+  }
+
+  export type PageVersionScalarWhereWithAggregatesInput = {
+    AND?: PageVersionScalarWhereWithAggregatesInput | PageVersionScalarWhereWithAggregatesInput[]
+    OR?: PageVersionScalarWhereWithAggregatesInput[]
+    NOT?: PageVersionScalarWhereWithAggregatesInput | PageVersionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PageVersion"> | number
+    pageId?: IntWithAggregatesFilter<"PageVersion"> | number
+    version?: IntWithAggregatesFilter<"PageVersion"> | number
+    config?: JsonNullableWithAggregatesFilter<"PageVersion">
+    sections?: JsonNullableWithAggregatesFilter<"PageVersion">
+    isPublished?: BoolWithAggregatesFilter<"PageVersion"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"PageVersion"> | Date | string
+  }
+
+  export type SectionWhereInput = {
+    AND?: SectionWhereInput | SectionWhereInput[]
+    OR?: SectionWhereInput[]
+    NOT?: SectionWhereInput | SectionWhereInput[]
+    id?: IntFilter<"Section"> | number
+    pageId?: IntNullableFilter<"Section"> | number | null
+    type?: StringFilter<"Section"> | string
+    title?: StringNullableFilter<"Section"> | string | null
+    order?: IntFilter<"Section"> | number
+    isGlobal?: BoolFilter<"Section"> | boolean
+    config?: JsonNullableFilter<"Section">
+    content?: JsonNullableFilter<"Section">
+    createdAt?: DateTimeFilter<"Section"> | Date | string
+    updatedAt?: DateTimeFilter<"Section"> | Date | string
+    page?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+  }
+
+  export type SectionOrderByWithRelationInput = {
+    id?: SortOrder
+    pageId?: SortOrderInput | SortOrder
+    type?: SortOrder
+    title?: SortOrderInput | SortOrder
+    order?: SortOrder
+    isGlobal?: SortOrder
+    config?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    page?: PageOrderByWithRelationInput
+  }
+
+  export type SectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: SectionWhereInput | SectionWhereInput[]
+    OR?: SectionWhereInput[]
+    NOT?: SectionWhereInput | SectionWhereInput[]
+    pageId?: IntNullableFilter<"Section"> | number | null
+    type?: StringFilter<"Section"> | string
+    title?: StringNullableFilter<"Section"> | string | null
+    order?: IntFilter<"Section"> | number
+    isGlobal?: BoolFilter<"Section"> | boolean
+    config?: JsonNullableFilter<"Section">
+    content?: JsonNullableFilter<"Section">
+    createdAt?: DateTimeFilter<"Section"> | Date | string
+    updatedAt?: DateTimeFilter<"Section"> | Date | string
+    page?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+  }, "id">
+
+  export type SectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    pageId?: SortOrderInput | SortOrder
+    type?: SortOrder
+    title?: SortOrderInput | SortOrder
+    order?: SortOrder
+    isGlobal?: SortOrder
+    config?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SectionCountOrderByAggregateInput
+    _avg?: SectionAvgOrderByAggregateInput
+    _max?: SectionMaxOrderByAggregateInput
+    _min?: SectionMinOrderByAggregateInput
+    _sum?: SectionSumOrderByAggregateInput
+  }
+
+  export type SectionScalarWhereWithAggregatesInput = {
+    AND?: SectionScalarWhereWithAggregatesInput | SectionScalarWhereWithAggregatesInput[]
+    OR?: SectionScalarWhereWithAggregatesInput[]
+    NOT?: SectionScalarWhereWithAggregatesInput | SectionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Section"> | number
+    pageId?: IntNullableWithAggregatesFilter<"Section"> | number | null
+    type?: StringWithAggregatesFilter<"Section"> | string
+    title?: StringNullableWithAggregatesFilter<"Section"> | string | null
+    order?: IntWithAggregatesFilter<"Section"> | number
+    isGlobal?: BoolWithAggregatesFilter<"Section"> | boolean
+    config?: JsonNullableWithAggregatesFilter<"Section">
+    content?: JsonNullableWithAggregatesFilter<"Section">
+    createdAt?: DateTimeWithAggregatesFilter<"Section"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Section"> | Date | string
   }
 
   export type LogWhereInput = {
@@ -23957,6 +30003,367 @@ export namespace Prisma {
     productId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type ThemeCreateInput = {
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ThemeVersion?: ThemeVersionCreateNestedManyWithoutThemeInput
+    pages?: PageCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeUncheckedCreateInput = {
+    id?: number
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ThemeVersion?: ThemeVersionUncheckedCreateNestedManyWithoutThemeInput
+    pages?: PageUncheckedCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThemeVersion?: ThemeVersionUpdateManyWithoutThemeNestedInput
+    pages?: PageUpdateManyWithoutThemeNestedInput
+  }
+
+  export type ThemeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThemeVersion?: ThemeVersionUncheckedUpdateManyWithoutThemeNestedInput
+    pages?: PageUncheckedUpdateManyWithoutThemeNestedInput
+  }
+
+  export type ThemeCreateManyInput = {
+    id?: number
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ThemeUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeVersionCreateInput = {
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+    theme: ThemeCreateNestedOneWithoutThemeVersionInput
+  }
+
+  export type ThemeVersionUncheckedCreateInput = {
+    id?: number
+    themeId: number
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ThemeVersionUpdateInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    theme?: ThemeUpdateOneRequiredWithoutThemeVersionNestedInput
+  }
+
+  export type ThemeVersionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    themeId?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeVersionCreateManyInput = {
+    id?: number
+    themeId: number
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ThemeVersionUpdateManyMutationInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeVersionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    themeId?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageCreateInput = {
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    theme?: ThemeCreateNestedOneWithoutPagesInput
+    sections?: SectionCreateNestedManyWithoutPageInput
+    PageVersion?: PageVersionCreateNestedManyWithoutPageInput
+  }
+
+  export type PageUncheckedCreateInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sections?: SectionUncheckedCreateNestedManyWithoutPageInput
+    PageVersion?: PageVersionUncheckedCreateNestedManyWithoutPageInput
+  }
+
+  export type PageUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    theme?: ThemeUpdateOneWithoutPagesNestedInput
+    sections?: SectionUpdateManyWithoutPageNestedInput
+    PageVersion?: PageVersionUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: SectionUncheckedUpdateManyWithoutPageNestedInput
+    PageVersion?: PageVersionUncheckedUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageCreateManyInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PageUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionCreateInput = {
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+    page: PageCreateNestedOneWithoutPageVersionInput
+  }
+
+  export type PageVersionUncheckedCreateInput = {
+    id?: number
+    pageId: number
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+  }
+
+  export type PageVersionUpdateInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneRequiredWithoutPageVersionNestedInput
+  }
+
+  export type PageVersionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    pageId?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionCreateManyInput = {
+    id?: number
+    pageId: number
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+  }
+
+  export type PageVersionUpdateManyMutationInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    pageId?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionCreateInput = {
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    page?: PageCreateNestedOneWithoutSectionsInput
+  }
+
+  export type SectionUncheckedCreateInput = {
+    id?: number
+    pageId?: number | null
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SectionUpdateInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneWithoutSectionsNestedInput
+  }
+
+  export type SectionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    pageId?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionCreateManyInput = {
+    id?: number
+    pageId?: number | null
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SectionUpdateManyMutationInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    pageId?: NullableIntFieldUpdateOperationsInput | number | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LogCreateInput = {
     level: $Enums.LogLevel
     message: string
@@ -25178,11 +31585,158 @@ export namespace Prisma {
     productId?: SortOrder
   }
 
-  export type EnumLogLevelFilter<$PrismaModel = never> = {
-    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    not?: NestedEnumLogLevelFilter<$PrismaModel> | $Enums.LogLevel
+  export type ThemeVersionListRelationFilter = {
+    every?: ThemeVersionWhereInput
+    some?: ThemeVersionWhereInput
+    none?: ThemeVersionWhereInput
+  }
+
+  export type PageListRelationFilter = {
+    every?: PageWhereInput
+    some?: PageWhereInput
+    none?: PageWhereInput
+  }
+
+  export type ThemeVersionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ThemeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    currentVersion?: SortOrder
+    templateUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ThemeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    currentVersion?: SortOrder
+  }
+
+  export type ThemeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    currentVersion?: SortOrder
+    templateUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ThemeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    currentVersion?: SortOrder
+    templateUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ThemeSumOrderByAggregateInput = {
+    id?: SortOrder
+    currentVersion?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type ThemeScalarRelationFilter = {
+    is?: ThemeWhereInput
+    isNot?: ThemeWhereInput
+  }
+
+  export type ThemeVersionThemeIdVersionCompoundUniqueInput = {
+    themeId: number
+    version: number
+  }
+
+  export type ThemeVersionCountOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+    config?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThemeVersionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+  }
+
+  export type ThemeVersionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThemeVersionMinOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+    isDefault?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThemeVersionSumOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+    version?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
   export type JsonNullableFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -25205,6 +31759,201 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type ThemeNullableScalarRelationFilter = {
+    is?: ThemeWhereInput | null
+    isNot?: ThemeWhereInput | null
+  }
+
+  export type SectionListRelationFilter = {
+    every?: SectionWhereInput
+    some?: SectionWhereInput
+    none?: SectionWhereInput
+  }
+
+  export type PageVersionListRelationFilter = {
+    every?: PageVersionWhereInput
+    some?: PageVersionWhereInput
+    none?: PageVersionWhereInput
+  }
+
+  export type SectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PageVersionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PageCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    config?: SortOrder
+    themeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+  }
+
+  export type PageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    themeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    themeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageSumOrderByAggregateInput = {
+    id?: SortOrder
+    themeId?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type PageScalarRelationFilter = {
+    is?: PageWhereInput
+    isNot?: PageWhereInput
+  }
+
+  export type PageVersionPageIdVersionCompoundUniqueInput = {
+    pageId: number
+    version: number
+  }
+
+  export type PageVersionCountOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+    config?: SortOrder
+    sections?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PageVersionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+  }
+
+  export type PageVersionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PageVersionMinOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+    isPublished?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PageVersionSumOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    version?: SortOrder
+  }
+
+  export type PageNullableScalarRelationFilter = {
+    is?: PageWhereInput | null
+    isNot?: PageWhereInput | null
+  }
+
+  export type SectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    isGlobal?: SortOrder
+    config?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SectionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type SectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    isGlobal?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    order?: SortOrder
+    isGlobal?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SectionSumOrderByAggregateInput = {
+    id?: SortOrder
+    pageId?: SortOrder
+    order?: SortOrder
+  }
+
+  export type EnumLogLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLogLevelFilter<$PrismaModel> | $Enums.LogLevel
   }
 
   export type UserNullableScalarRelationFilter = {
@@ -25261,31 +32010,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLogLevelFilter<$PrismaModel>
     _max?: NestedEnumLogLevelFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -26492,6 +33216,234 @@ export namespace Prisma {
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutCollectionProductInput, ProductUpdateWithoutCollectionProductInput>, ProductUncheckedUpdateWithoutCollectionProductInput>
   }
 
+  export type ThemeVersionCreateNestedManyWithoutThemeInput = {
+    create?: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput> | ThemeVersionCreateWithoutThemeInput[] | ThemeVersionUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: ThemeVersionCreateOrConnectWithoutThemeInput | ThemeVersionCreateOrConnectWithoutThemeInput[]
+    createMany?: ThemeVersionCreateManyThemeInputEnvelope
+    connect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+  }
+
+  export type PageCreateNestedManyWithoutThemeInput = {
+    create?: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput> | PageCreateWithoutThemeInput[] | PageUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThemeInput | PageCreateOrConnectWithoutThemeInput[]
+    createMany?: PageCreateManyThemeInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type ThemeVersionUncheckedCreateNestedManyWithoutThemeInput = {
+    create?: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput> | ThemeVersionCreateWithoutThemeInput[] | ThemeVersionUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: ThemeVersionCreateOrConnectWithoutThemeInput | ThemeVersionCreateOrConnectWithoutThemeInput[]
+    createMany?: ThemeVersionCreateManyThemeInputEnvelope
+    connect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+  }
+
+  export type PageUncheckedCreateNestedManyWithoutThemeInput = {
+    create?: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput> | PageCreateWithoutThemeInput[] | PageUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThemeInput | PageCreateOrConnectWithoutThemeInput[]
+    createMany?: PageCreateManyThemeInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type ThemeVersionUpdateManyWithoutThemeNestedInput = {
+    create?: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput> | ThemeVersionCreateWithoutThemeInput[] | ThemeVersionUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: ThemeVersionCreateOrConnectWithoutThemeInput | ThemeVersionCreateOrConnectWithoutThemeInput[]
+    upsert?: ThemeVersionUpsertWithWhereUniqueWithoutThemeInput | ThemeVersionUpsertWithWhereUniqueWithoutThemeInput[]
+    createMany?: ThemeVersionCreateManyThemeInputEnvelope
+    set?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    disconnect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    delete?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    connect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    update?: ThemeVersionUpdateWithWhereUniqueWithoutThemeInput | ThemeVersionUpdateWithWhereUniqueWithoutThemeInput[]
+    updateMany?: ThemeVersionUpdateManyWithWhereWithoutThemeInput | ThemeVersionUpdateManyWithWhereWithoutThemeInput[]
+    deleteMany?: ThemeVersionScalarWhereInput | ThemeVersionScalarWhereInput[]
+  }
+
+  export type PageUpdateManyWithoutThemeNestedInput = {
+    create?: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput> | PageCreateWithoutThemeInput[] | PageUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThemeInput | PageCreateOrConnectWithoutThemeInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutThemeInput | PageUpsertWithWhereUniqueWithoutThemeInput[]
+    createMany?: PageCreateManyThemeInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutThemeInput | PageUpdateWithWhereUniqueWithoutThemeInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutThemeInput | PageUpdateManyWithWhereWithoutThemeInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type ThemeVersionUncheckedUpdateManyWithoutThemeNestedInput = {
+    create?: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput> | ThemeVersionCreateWithoutThemeInput[] | ThemeVersionUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: ThemeVersionCreateOrConnectWithoutThemeInput | ThemeVersionCreateOrConnectWithoutThemeInput[]
+    upsert?: ThemeVersionUpsertWithWhereUniqueWithoutThemeInput | ThemeVersionUpsertWithWhereUniqueWithoutThemeInput[]
+    createMany?: ThemeVersionCreateManyThemeInputEnvelope
+    set?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    disconnect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    delete?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    connect?: ThemeVersionWhereUniqueInput | ThemeVersionWhereUniqueInput[]
+    update?: ThemeVersionUpdateWithWhereUniqueWithoutThemeInput | ThemeVersionUpdateWithWhereUniqueWithoutThemeInput[]
+    updateMany?: ThemeVersionUpdateManyWithWhereWithoutThemeInput | ThemeVersionUpdateManyWithWhereWithoutThemeInput[]
+    deleteMany?: ThemeVersionScalarWhereInput | ThemeVersionScalarWhereInput[]
+  }
+
+  export type PageUncheckedUpdateManyWithoutThemeNestedInput = {
+    create?: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput> | PageCreateWithoutThemeInput[] | PageUncheckedCreateWithoutThemeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThemeInput | PageCreateOrConnectWithoutThemeInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutThemeInput | PageUpsertWithWhereUniqueWithoutThemeInput[]
+    createMany?: PageCreateManyThemeInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutThemeInput | PageUpdateWithWhereUniqueWithoutThemeInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutThemeInput | PageUpdateManyWithWhereWithoutThemeInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type ThemeCreateNestedOneWithoutThemeVersionInput = {
+    create?: XOR<ThemeCreateWithoutThemeVersionInput, ThemeUncheckedCreateWithoutThemeVersionInput>
+    connectOrCreate?: ThemeCreateOrConnectWithoutThemeVersionInput
+    connect?: ThemeWhereUniqueInput
+  }
+
+  export type ThemeUpdateOneRequiredWithoutThemeVersionNestedInput = {
+    create?: XOR<ThemeCreateWithoutThemeVersionInput, ThemeUncheckedCreateWithoutThemeVersionInput>
+    connectOrCreate?: ThemeCreateOrConnectWithoutThemeVersionInput
+    upsert?: ThemeUpsertWithoutThemeVersionInput
+    connect?: ThemeWhereUniqueInput
+    update?: XOR<XOR<ThemeUpdateToOneWithWhereWithoutThemeVersionInput, ThemeUpdateWithoutThemeVersionInput>, ThemeUncheckedUpdateWithoutThemeVersionInput>
+  }
+
+  export type ThemeCreateNestedOneWithoutPagesInput = {
+    create?: XOR<ThemeCreateWithoutPagesInput, ThemeUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: ThemeCreateOrConnectWithoutPagesInput
+    connect?: ThemeWhereUniqueInput
+  }
+
+  export type SectionCreateNestedManyWithoutPageInput = {
+    create?: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput> | SectionCreateWithoutPageInput[] | SectionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutPageInput | SectionCreateOrConnectWithoutPageInput[]
+    createMany?: SectionCreateManyPageInputEnvelope
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+  }
+
+  export type PageVersionCreateNestedManyWithoutPageInput = {
+    create?: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput> | PageVersionCreateWithoutPageInput[] | PageVersionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: PageVersionCreateOrConnectWithoutPageInput | PageVersionCreateOrConnectWithoutPageInput[]
+    createMany?: PageVersionCreateManyPageInputEnvelope
+    connect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+  }
+
+  export type SectionUncheckedCreateNestedManyWithoutPageInput = {
+    create?: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput> | SectionCreateWithoutPageInput[] | SectionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutPageInput | SectionCreateOrConnectWithoutPageInput[]
+    createMany?: SectionCreateManyPageInputEnvelope
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+  }
+
+  export type PageVersionUncheckedCreateNestedManyWithoutPageInput = {
+    create?: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput> | PageVersionCreateWithoutPageInput[] | PageVersionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: PageVersionCreateOrConnectWithoutPageInput | PageVersionCreateOrConnectWithoutPageInput[]
+    createMany?: PageVersionCreateManyPageInputEnvelope
+    connect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+  }
+
+  export type ThemeUpdateOneWithoutPagesNestedInput = {
+    create?: XOR<ThemeCreateWithoutPagesInput, ThemeUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: ThemeCreateOrConnectWithoutPagesInput
+    upsert?: ThemeUpsertWithoutPagesInput
+    disconnect?: ThemeWhereInput | boolean
+    delete?: ThemeWhereInput | boolean
+    connect?: ThemeWhereUniqueInput
+    update?: XOR<XOR<ThemeUpdateToOneWithWhereWithoutPagesInput, ThemeUpdateWithoutPagesInput>, ThemeUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type SectionUpdateManyWithoutPageNestedInput = {
+    create?: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput> | SectionCreateWithoutPageInput[] | SectionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutPageInput | SectionCreateOrConnectWithoutPageInput[]
+    upsert?: SectionUpsertWithWhereUniqueWithoutPageInput | SectionUpsertWithWhereUniqueWithoutPageInput[]
+    createMany?: SectionCreateManyPageInputEnvelope
+    set?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    disconnect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    delete?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    update?: SectionUpdateWithWhereUniqueWithoutPageInput | SectionUpdateWithWhereUniqueWithoutPageInput[]
+    updateMany?: SectionUpdateManyWithWhereWithoutPageInput | SectionUpdateManyWithWhereWithoutPageInput[]
+    deleteMany?: SectionScalarWhereInput | SectionScalarWhereInput[]
+  }
+
+  export type PageVersionUpdateManyWithoutPageNestedInput = {
+    create?: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput> | PageVersionCreateWithoutPageInput[] | PageVersionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: PageVersionCreateOrConnectWithoutPageInput | PageVersionCreateOrConnectWithoutPageInput[]
+    upsert?: PageVersionUpsertWithWhereUniqueWithoutPageInput | PageVersionUpsertWithWhereUniqueWithoutPageInput[]
+    createMany?: PageVersionCreateManyPageInputEnvelope
+    set?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    disconnect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    delete?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    connect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    update?: PageVersionUpdateWithWhereUniqueWithoutPageInput | PageVersionUpdateWithWhereUniqueWithoutPageInput[]
+    updateMany?: PageVersionUpdateManyWithWhereWithoutPageInput | PageVersionUpdateManyWithWhereWithoutPageInput[]
+    deleteMany?: PageVersionScalarWhereInput | PageVersionScalarWhereInput[]
+  }
+
+  export type SectionUncheckedUpdateManyWithoutPageNestedInput = {
+    create?: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput> | SectionCreateWithoutPageInput[] | SectionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutPageInput | SectionCreateOrConnectWithoutPageInput[]
+    upsert?: SectionUpsertWithWhereUniqueWithoutPageInput | SectionUpsertWithWhereUniqueWithoutPageInput[]
+    createMany?: SectionCreateManyPageInputEnvelope
+    set?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    disconnect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    delete?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    update?: SectionUpdateWithWhereUniqueWithoutPageInput | SectionUpdateWithWhereUniqueWithoutPageInput[]
+    updateMany?: SectionUpdateManyWithWhereWithoutPageInput | SectionUpdateManyWithWhereWithoutPageInput[]
+    deleteMany?: SectionScalarWhereInput | SectionScalarWhereInput[]
+  }
+
+  export type PageVersionUncheckedUpdateManyWithoutPageNestedInput = {
+    create?: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput> | PageVersionCreateWithoutPageInput[] | PageVersionUncheckedCreateWithoutPageInput[]
+    connectOrCreate?: PageVersionCreateOrConnectWithoutPageInput | PageVersionCreateOrConnectWithoutPageInput[]
+    upsert?: PageVersionUpsertWithWhereUniqueWithoutPageInput | PageVersionUpsertWithWhereUniqueWithoutPageInput[]
+    createMany?: PageVersionCreateManyPageInputEnvelope
+    set?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    disconnect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    delete?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    connect?: PageVersionWhereUniqueInput | PageVersionWhereUniqueInput[]
+    update?: PageVersionUpdateWithWhereUniqueWithoutPageInput | PageVersionUpdateWithWhereUniqueWithoutPageInput[]
+    updateMany?: PageVersionUpdateManyWithWhereWithoutPageInput | PageVersionUpdateManyWithWhereWithoutPageInput[]
+    deleteMany?: PageVersionScalarWhereInput | PageVersionScalarWhereInput[]
+  }
+
+  export type PageCreateNestedOneWithoutPageVersionInput = {
+    create?: XOR<PageCreateWithoutPageVersionInput, PageUncheckedCreateWithoutPageVersionInput>
+    connectOrCreate?: PageCreateOrConnectWithoutPageVersionInput
+    connect?: PageWhereUniqueInput
+  }
+
+  export type PageUpdateOneRequiredWithoutPageVersionNestedInput = {
+    create?: XOR<PageCreateWithoutPageVersionInput, PageUncheckedCreateWithoutPageVersionInput>
+    connectOrCreate?: PageCreateOrConnectWithoutPageVersionInput
+    upsert?: PageUpsertWithoutPageVersionInput
+    connect?: PageWhereUniqueInput
+    update?: XOR<XOR<PageUpdateToOneWithWhereWithoutPageVersionInput, PageUpdateWithoutPageVersionInput>, PageUncheckedUpdateWithoutPageVersionInput>
+  }
+
+  export type PageCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<PageCreateWithoutSectionsInput, PageUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSectionsInput
+    connect?: PageWhereUniqueInput
+  }
+
+  export type PageUpdateOneWithoutSectionsNestedInput = {
+    create?: XOR<PageCreateWithoutSectionsInput, PageUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSectionsInput
+    upsert?: PageUpsertWithoutSectionsInput
+    disconnect?: PageWhereInput | boolean
+    delete?: PageWhereInput | boolean
+    connect?: PageWhereUniqueInput
+    update?: XOR<XOR<PageUpdateToOneWithWhereWithoutSectionsInput, PageUpdateWithoutSectionsInput>, PageUncheckedUpdateWithoutSectionsInput>
+  }
+
   export type UserCreateNestedOneWithoutLogsInput = {
     create?: XOR<UserCreateWithoutLogsInput, UserUncheckedCreateWithoutLogsInput>
     connectOrCreate?: UserCreateOrConnectWithoutLogsInput
@@ -26778,22 +33730,27 @@ export namespace Prisma {
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedEnumLogLevelFilter<$PrismaModel = never> = {
-    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    not?: NestedEnumLogLevelFilter<$PrismaModel> | $Enums.LogLevel
-  }
-
-  export type NestedEnumLogLevelWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
-    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
-    not?: NestedEnumLogLevelWithAggregatesFilter<$PrismaModel> | $Enums.LogLevel
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumLogLevelFilter<$PrismaModel>
-    _max?: NestedEnumLogLevelFilter<$PrismaModel>
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -26816,6 +33773,23 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumLogLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLogLevelFilter<$PrismaModel> | $Enums.LogLevel
+  }
+
+  export type NestedEnumLogLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LogLevel | EnumLogLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LogLevel[] | ListEnumLogLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLogLevelWithAggregatesFilter<$PrismaModel> | $Enums.LogLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLogLevelFilter<$PrismaModel>
+    _max?: NestedEnumLogLevelFilter<$PrismaModel>
   }
 
   export type OrderCreateWithoutUserInput = {
@@ -29342,6 +36316,472 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutProductNestedInput
   }
 
+  export type ThemeVersionCreateWithoutThemeInput = {
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ThemeVersionUncheckedCreateWithoutThemeInput = {
+    id?: number
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ThemeVersionCreateOrConnectWithoutThemeInput = {
+    where: ThemeVersionWhereUniqueInput
+    create: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput>
+  }
+
+  export type ThemeVersionCreateManyThemeInputEnvelope = {
+    data: ThemeVersionCreateManyThemeInput | ThemeVersionCreateManyThemeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageCreateWithoutThemeInput = {
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sections?: SectionCreateNestedManyWithoutPageInput
+    PageVersion?: PageVersionCreateNestedManyWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutThemeInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sections?: SectionUncheckedCreateNestedManyWithoutPageInput
+    PageVersion?: PageVersionUncheckedCreateNestedManyWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutThemeInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput>
+  }
+
+  export type PageCreateManyThemeInputEnvelope = {
+    data: PageCreateManyThemeInput | PageCreateManyThemeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ThemeVersionUpsertWithWhereUniqueWithoutThemeInput = {
+    where: ThemeVersionWhereUniqueInput
+    update: XOR<ThemeVersionUpdateWithoutThemeInput, ThemeVersionUncheckedUpdateWithoutThemeInput>
+    create: XOR<ThemeVersionCreateWithoutThemeInput, ThemeVersionUncheckedCreateWithoutThemeInput>
+  }
+
+  export type ThemeVersionUpdateWithWhereUniqueWithoutThemeInput = {
+    where: ThemeVersionWhereUniqueInput
+    data: XOR<ThemeVersionUpdateWithoutThemeInput, ThemeVersionUncheckedUpdateWithoutThemeInput>
+  }
+
+  export type ThemeVersionUpdateManyWithWhereWithoutThemeInput = {
+    where: ThemeVersionScalarWhereInput
+    data: XOR<ThemeVersionUpdateManyMutationInput, ThemeVersionUncheckedUpdateManyWithoutThemeInput>
+  }
+
+  export type ThemeVersionScalarWhereInput = {
+    AND?: ThemeVersionScalarWhereInput | ThemeVersionScalarWhereInput[]
+    OR?: ThemeVersionScalarWhereInput[]
+    NOT?: ThemeVersionScalarWhereInput | ThemeVersionScalarWhereInput[]
+    id?: IntFilter<"ThemeVersion"> | number
+    themeId?: IntFilter<"ThemeVersion"> | number
+    version?: IntFilter<"ThemeVersion"> | number
+    config?: JsonFilter<"ThemeVersion">
+    isDefault?: BoolFilter<"ThemeVersion"> | boolean
+    createdAt?: DateTimeFilter<"ThemeVersion"> | Date | string
+  }
+
+  export type PageUpsertWithWhereUniqueWithoutThemeInput = {
+    where: PageWhereUniqueInput
+    update: XOR<PageUpdateWithoutThemeInput, PageUncheckedUpdateWithoutThemeInput>
+    create: XOR<PageCreateWithoutThemeInput, PageUncheckedCreateWithoutThemeInput>
+  }
+
+  export type PageUpdateWithWhereUniqueWithoutThemeInput = {
+    where: PageWhereUniqueInput
+    data: XOR<PageUpdateWithoutThemeInput, PageUncheckedUpdateWithoutThemeInput>
+  }
+
+  export type PageUpdateManyWithWhereWithoutThemeInput = {
+    where: PageScalarWhereInput
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyWithoutThemeInput>
+  }
+
+  export type PageScalarWhereInput = {
+    AND?: PageScalarWhereInput | PageScalarWhereInput[]
+    OR?: PageScalarWhereInput[]
+    NOT?: PageScalarWhereInput | PageScalarWhereInput[]
+    id?: IntFilter<"Page"> | number
+    title?: StringFilter<"Page"> | string
+    slug?: StringFilter<"Page"> | string
+    config?: JsonNullableFilter<"Page">
+    themeId?: IntNullableFilter<"Page"> | number | null
+    createdAt?: DateTimeFilter<"Page"> | Date | string
+    updatedAt?: DateTimeFilter<"Page"> | Date | string
+  }
+
+  export type ThemeCreateWithoutThemeVersionInput = {
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pages?: PageCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeUncheckedCreateWithoutThemeVersionInput = {
+    id?: number
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pages?: PageUncheckedCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeCreateOrConnectWithoutThemeVersionInput = {
+    where: ThemeWhereUniqueInput
+    create: XOR<ThemeCreateWithoutThemeVersionInput, ThemeUncheckedCreateWithoutThemeVersionInput>
+  }
+
+  export type ThemeUpsertWithoutThemeVersionInput = {
+    update: XOR<ThemeUpdateWithoutThemeVersionInput, ThemeUncheckedUpdateWithoutThemeVersionInput>
+    create: XOR<ThemeCreateWithoutThemeVersionInput, ThemeUncheckedCreateWithoutThemeVersionInput>
+    where?: ThemeWhereInput
+  }
+
+  export type ThemeUpdateToOneWithWhereWithoutThemeVersionInput = {
+    where?: ThemeWhereInput
+    data: XOR<ThemeUpdateWithoutThemeVersionInput, ThemeUncheckedUpdateWithoutThemeVersionInput>
+  }
+
+  export type ThemeUpdateWithoutThemeVersionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pages?: PageUpdateManyWithoutThemeNestedInput
+  }
+
+  export type ThemeUncheckedUpdateWithoutThemeVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pages?: PageUncheckedUpdateManyWithoutThemeNestedInput
+  }
+
+  export type ThemeCreateWithoutPagesInput = {
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ThemeVersion?: ThemeVersionCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeUncheckedCreateWithoutPagesInput = {
+    id?: number
+    name: string
+    currentVersion: number
+    templateUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ThemeVersion?: ThemeVersionUncheckedCreateNestedManyWithoutThemeInput
+  }
+
+  export type ThemeCreateOrConnectWithoutPagesInput = {
+    where: ThemeWhereUniqueInput
+    create: XOR<ThemeCreateWithoutPagesInput, ThemeUncheckedCreateWithoutPagesInput>
+  }
+
+  export type SectionCreateWithoutPageInput = {
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SectionUncheckedCreateWithoutPageInput = {
+    id?: number
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SectionCreateOrConnectWithoutPageInput = {
+    where: SectionWhereUniqueInput
+    create: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput>
+  }
+
+  export type SectionCreateManyPageInputEnvelope = {
+    data: SectionCreateManyPageInput | SectionCreateManyPageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageVersionCreateWithoutPageInput = {
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+  }
+
+  export type PageVersionUncheckedCreateWithoutPageInput = {
+    id?: number
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+  }
+
+  export type PageVersionCreateOrConnectWithoutPageInput = {
+    where: PageVersionWhereUniqueInput
+    create: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput>
+  }
+
+  export type PageVersionCreateManyPageInputEnvelope = {
+    data: PageVersionCreateManyPageInput | PageVersionCreateManyPageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ThemeUpsertWithoutPagesInput = {
+    update: XOR<ThemeUpdateWithoutPagesInput, ThemeUncheckedUpdateWithoutPagesInput>
+    create: XOR<ThemeCreateWithoutPagesInput, ThemeUncheckedCreateWithoutPagesInput>
+    where?: ThemeWhereInput
+  }
+
+  export type ThemeUpdateToOneWithWhereWithoutPagesInput = {
+    where?: ThemeWhereInput
+    data: XOR<ThemeUpdateWithoutPagesInput, ThemeUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type ThemeUpdateWithoutPagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThemeVersion?: ThemeVersionUpdateManyWithoutThemeNestedInput
+  }
+
+  export type ThemeUncheckedUpdateWithoutPagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentVersion?: IntFieldUpdateOperationsInput | number
+    templateUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThemeVersion?: ThemeVersionUncheckedUpdateManyWithoutThemeNestedInput
+  }
+
+  export type SectionUpsertWithWhereUniqueWithoutPageInput = {
+    where: SectionWhereUniqueInput
+    update: XOR<SectionUpdateWithoutPageInput, SectionUncheckedUpdateWithoutPageInput>
+    create: XOR<SectionCreateWithoutPageInput, SectionUncheckedCreateWithoutPageInput>
+  }
+
+  export type SectionUpdateWithWhereUniqueWithoutPageInput = {
+    where: SectionWhereUniqueInput
+    data: XOR<SectionUpdateWithoutPageInput, SectionUncheckedUpdateWithoutPageInput>
+  }
+
+  export type SectionUpdateManyWithWhereWithoutPageInput = {
+    where: SectionScalarWhereInput
+    data: XOR<SectionUpdateManyMutationInput, SectionUncheckedUpdateManyWithoutPageInput>
+  }
+
+  export type SectionScalarWhereInput = {
+    AND?: SectionScalarWhereInput | SectionScalarWhereInput[]
+    OR?: SectionScalarWhereInput[]
+    NOT?: SectionScalarWhereInput | SectionScalarWhereInput[]
+    id?: IntFilter<"Section"> | number
+    pageId?: IntNullableFilter<"Section"> | number | null
+    type?: StringFilter<"Section"> | string
+    title?: StringNullableFilter<"Section"> | string | null
+    order?: IntFilter<"Section"> | number
+    isGlobal?: BoolFilter<"Section"> | boolean
+    config?: JsonNullableFilter<"Section">
+    content?: JsonNullableFilter<"Section">
+    createdAt?: DateTimeFilter<"Section"> | Date | string
+    updatedAt?: DateTimeFilter<"Section"> | Date | string
+  }
+
+  export type PageVersionUpsertWithWhereUniqueWithoutPageInput = {
+    where: PageVersionWhereUniqueInput
+    update: XOR<PageVersionUpdateWithoutPageInput, PageVersionUncheckedUpdateWithoutPageInput>
+    create: XOR<PageVersionCreateWithoutPageInput, PageVersionUncheckedCreateWithoutPageInput>
+  }
+
+  export type PageVersionUpdateWithWhereUniqueWithoutPageInput = {
+    where: PageVersionWhereUniqueInput
+    data: XOR<PageVersionUpdateWithoutPageInput, PageVersionUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageVersionUpdateManyWithWhereWithoutPageInput = {
+    where: PageVersionScalarWhereInput
+    data: XOR<PageVersionUpdateManyMutationInput, PageVersionUncheckedUpdateManyWithoutPageInput>
+  }
+
+  export type PageVersionScalarWhereInput = {
+    AND?: PageVersionScalarWhereInput | PageVersionScalarWhereInput[]
+    OR?: PageVersionScalarWhereInput[]
+    NOT?: PageVersionScalarWhereInput | PageVersionScalarWhereInput[]
+    id?: IntFilter<"PageVersion"> | number
+    pageId?: IntFilter<"PageVersion"> | number
+    version?: IntFilter<"PageVersion"> | number
+    config?: JsonNullableFilter<"PageVersion">
+    sections?: JsonNullableFilter<"PageVersion">
+    isPublished?: BoolFilter<"PageVersion"> | boolean
+    createdAt?: DateTimeFilter<"PageVersion"> | Date | string
+  }
+
+  export type PageCreateWithoutPageVersionInput = {
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    theme?: ThemeCreateNestedOneWithoutPagesInput
+    sections?: SectionCreateNestedManyWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutPageVersionInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sections?: SectionUncheckedCreateNestedManyWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutPageVersionInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutPageVersionInput, PageUncheckedCreateWithoutPageVersionInput>
+  }
+
+  export type PageUpsertWithoutPageVersionInput = {
+    update: XOR<PageUpdateWithoutPageVersionInput, PageUncheckedUpdateWithoutPageVersionInput>
+    create: XOR<PageCreateWithoutPageVersionInput, PageUncheckedCreateWithoutPageVersionInput>
+    where?: PageWhereInput
+  }
+
+  export type PageUpdateToOneWithWhereWithoutPageVersionInput = {
+    where?: PageWhereInput
+    data: XOR<PageUpdateWithoutPageVersionInput, PageUncheckedUpdateWithoutPageVersionInput>
+  }
+
+  export type PageUpdateWithoutPageVersionInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    theme?: ThemeUpdateOneWithoutPagesNestedInput
+    sections?: SectionUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutPageVersionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: SectionUncheckedUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageCreateWithoutSectionsInput = {
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    theme?: ThemeCreateNestedOneWithoutPagesInput
+    PageVersion?: PageVersionCreateNestedManyWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutSectionsInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    PageVersion?: PageVersionUncheckedCreateNestedManyWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutSectionsInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutSectionsInput, PageUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type PageUpsertWithoutSectionsInput = {
+    update: XOR<PageUpdateWithoutSectionsInput, PageUncheckedUpdateWithoutSectionsInput>
+    create: XOR<PageCreateWithoutSectionsInput, PageUncheckedCreateWithoutSectionsInput>
+    where?: PageWhereInput
+  }
+
+  export type PageUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: PageWhereInput
+    data: XOR<PageUpdateWithoutSectionsInput, PageUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type PageUpdateWithoutSectionsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    theme?: ThemeUpdateOneWithoutPagesNestedInput
+    PageVersion?: PageVersionUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutSectionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    PageVersion?: PageVersionUncheckedUpdateManyWithoutPageNestedInput
+  }
+
   export type UserCreateWithoutLogsInput = {
     email: string
     password: string
@@ -30091,6 +37531,158 @@ export namespace Prisma {
   export type CollectionProductUncheckedUpdateManyWithoutCollectionInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ThemeVersionCreateManyThemeInput = {
+    id?: number
+    version: number
+    config: JsonNullValueInput | InputJsonValue
+    isDefault?: boolean
+    createdAt?: Date | string
+  }
+
+  export type PageCreateManyThemeInput = {
+    id?: number
+    title: string
+    slug: string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ThemeVersionUpdateWithoutThemeInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeVersionUncheckedUpdateWithoutThemeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThemeVersionUncheckedUpdateManyWithoutThemeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: JsonNullValueInput | InputJsonValue
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageUpdateWithoutThemeInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: SectionUpdateManyWithoutPageNestedInput
+    PageVersion?: PageVersionUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutThemeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: SectionUncheckedUpdateManyWithoutPageNestedInput
+    PageVersion?: PageVersionUncheckedUpdateManyWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateManyWithoutThemeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    config?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionCreateManyPageInput = {
+    id?: number
+    type: string
+    title?: string | null
+    order: number
+    isGlobal?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PageVersionCreateManyPageInput = {
+    id?: number
+    version: number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: boolean
+    createdAt?: Date | string
+  }
+
+  export type SectionUpdateWithoutPageInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionUncheckedUpdateWithoutPageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SectionUncheckedUpdateManyWithoutPageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isGlobal?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
+    content?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionUpdateWithoutPageInput = {
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionUncheckedUpdateWithoutPageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageVersionUncheckedUpdateManyWithoutPageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    version?: IntFieldUpdateOperationsInput | number
+    config?: NullableJsonNullValueInput | InputJsonValue
+    sections?: NullableJsonNullValueInput | InputJsonValue
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

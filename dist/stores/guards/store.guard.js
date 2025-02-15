@@ -48,10 +48,16 @@ let StoreGuard = class StoreGuard {
             return true;
         }
         catch (error) {
+            console.error('Error:', error);
             if (error.name === 'TokenExpiredError') {
                 throw new common_1.ForbiddenException('Token is expired');
             }
-            console.error('Token Verification Error:', error);
+            else if (error.message === 'Store not found') {
+                throw new common_1.ForbiddenException('Store not found');
+            }
+            else if (error.message === 'Store ID is required in the request body') {
+                throw new common_1.ForbiddenException('Store ID is required in the request body');
+            }
             throw new common_1.ForbiddenException('Invalid token');
         }
     }

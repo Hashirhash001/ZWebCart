@@ -283,6 +283,58 @@ exports.Prisma.CollectionProductScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.ThemeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  currentVersion: 'currentVersion',
+  templateUrl: 'templateUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ThemeVersionScalarFieldEnum = {
+  id: 'id',
+  themeId: 'themeId',
+  version: 'version',
+  config: 'config',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PageScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  config: 'config',
+  themeId: 'themeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PageVersionScalarFieldEnum = {
+  id: 'id',
+  pageId: 'pageId',
+  version: 'version',
+  config: 'config',
+  sections: 'sections',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SectionScalarFieldEnum = {
+  id: 'id',
+  pageId: 'pageId',
+  type: 'type',
+  title: 'title',
+  order: 'order',
+  isGlobal: 'isGlobal',
+  config: 'config',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.LogScalarFieldEnum = {
   id: 'id',
   level: 'level',
@@ -297,6 +349,10 @@ exports.Prisma.LogScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.NullableJsonNullValueInput = {
@@ -359,6 +415,11 @@ exports.Prisma.ModelName = {
   WishlistItem: 'WishlistItem',
   Collection: 'Collection',
   CollectionProduct: 'CollectionProduct',
+  Theme: 'Theme',
+  ThemeVersion: 'ThemeVersion',
+  Page: 'Page',
+  PageVersion: 'PageVersion',
+  Section: 'Section',
   Log: 'Log'
 };
 

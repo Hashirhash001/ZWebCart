@@ -59,7 +59,7 @@ export class AdminGuard implements CanActivate {
       const decryptedDbUrl = decrypt(store.dbUrl);
 
       // Attach storeDbUrl and storeId to the request object
-      request['storeId'] = decoded.storeId;
+      request['storeId'] = storeId;
       request['storeDbUrl'] = decryptedDbUrl;
       // console.log('storeDbUrl:', decryptedDbUrl);
 

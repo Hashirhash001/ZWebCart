@@ -22,7 +22,7 @@ exports.ProductsModule = ProductsModule = __decorate([
         imports: [
             jwt_1.JwtModule.register({
                 secret: process.env.JWT_SECRET,
-                signOptions: { expiresIn: '10h' },
+                signOptions: { expiresIn: '7d' },
             }),
         ],
         providers: [products_service_1.ProductsService, prisma_service_1.PrismaDynamicService, prisma_central_service_1.PrismaCentralService, admin_guard_1.AdminGuard],

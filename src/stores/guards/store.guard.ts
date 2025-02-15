@@ -55,10 +55,17 @@ export class StoreGuard implements CanActivate {
 
       return true;
     } catch (error) {
+      console.error('Error:', error);
+
+      // Check for token-specific errors
       if (error.name === 'TokenExpiredError') {
         throw new ForbiddenException('Token is expired');
+      } else if (error.message === 'Store not found') {
+        throw new ForbiddenException('Store not found');
+      } else if (error.message === 'Store ID is required in the request body') {
+        throw new ForbiddenException('Store ID is required in the request body');
       }
-      console.error('Token Verification Error:', error);
+
       throw new ForbiddenException('Invalid token');
     }
   }

@@ -18,6 +18,10 @@ const path_1 = require("path");
 const cart_module_1 = require("./stores/cart/cart.module");
 const wishlist_module_1 = require("./stores/wishlist/wishlist.module");
 const collections_module_1 = require("./stores/collections/collections.module");
+const themes_module_1 = require("./stores/theme-customisation/themes/themes.module");
+const pages_module_1 = require("./stores/theme-customisation/pages/pages.module");
+const sections_module_1 = require("./stores/theme-customisation/sections/sections.module");
+const google_auth_module_1 = require("./central/google-auth/google-auth.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -35,7 +39,11 @@ exports.AppModule = AppModule = __decorate([
             }),
             cart_module_1.CartModule,
             wishlist_module_1.WishlistModule,
-            collections_module_1.CollectionsModule
+            collections_module_1.CollectionsModule,
+            themes_module_1.ThemesModule,
+            pages_module_1.PagesModule,
+            sections_module_1.SectionsModule,
+            google_auth_module_1.GoogleAuthModule
         ],
         controllers: [],
         providers: [],

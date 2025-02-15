@@ -11,7 +11,11 @@ datasource db {
 model User {
   id        String    @id @default(uuid())
   email     String    @unique
-  password  String
+  password  String?
+  googleId  String?   @unique // Store Google OAuth ID
+  provider  String    @default("local") // "local" or "google"
+  name      String?
+  avatarUrl String? // Google profile picture URL
   role      Role      @default(USER)
   stores    Store[] // User's associated stores
   createdAt DateTime  @default(now())
@@ -25,6 +29,7 @@ model Store {
   name      String
   dbName    String    @unique
   dbUrl     String    @unique
+  storeUrl  String    @unique
   ownerId   String
   owner     User      @relation(fields: [ownerId], references: [id])
   createdAt DateTime  @default(now())

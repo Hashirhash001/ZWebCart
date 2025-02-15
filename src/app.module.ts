@@ -9,6 +9,10 @@ import { join } from 'path';
 import { CartModule } from './stores/cart/cart.module';
 import { WishlistModule } from './stores/wishlist/wishlist.module';
 import { CollectionsModule } from './stores/collections/collections.module';
+import { ThemesModule } from './stores/theme-customisation/themes/themes.module';
+import { PagesModule } from './stores/theme-customisation/pages/pages.module';
+import { SectionsModule } from './stores/theme-customisation/sections/sections.module';
+import { GoogleAuthModule } from './central/google-auth/google-auth.module';
 
 @Module({
   imports: [
@@ -23,7 +27,11 @@ import { CollectionsModule } from './stores/collections/collections.module';
     }),
     CartModule,
     WishlistModule,
-    CollectionsModule
+    CollectionsModule,
+    ThemesModule,
+    PagesModule,
+    SectionsModule,
+    GoogleAuthModule
   ],
   controllers: [],
   providers: [],

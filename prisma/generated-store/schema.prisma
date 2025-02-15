@@ -11,7 +11,7 @@ datasource db {
 
 model StoreSettings {
   id        Int      @id @default(autoincrement())
-  storeId   String   @unique // Referencing Store in the central schema
+  storeId   String
   storeName String
   currency  String? // Example field for default currency
   timezone  String? // Example field for store timezone
@@ -226,6 +226,83 @@ model CollectionProduct {
   product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@unique([collectionId, productId])
+}
+
+model Theme {
+  id             Int      @id @default(autoincrement())
+  name           String
+  currentVersion Int // Points to the active version (e.g., version 1 for default)
+  templateUrl    String?
+  isActive       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  ThemeVersion ThemeVersion[]
+  pages        Page[]
+}
+
+model ThemeVersion {
+  id        Int      @id @default(autoincrement())
+  themeId   Int
+  theme     Theme    @relation(fields: [themeId], references: [id])
+  version   Int // Version number (e.g., 1 for default)
+  config    Json // Snapshot of configuration
+  isDefault Boolean  @default(false) // Mark the default version
+  createdAt DateTime @default(now())
+
+  @@unique([themeId, version])
+}
+
+model Page {
+  id     Int    @id @default(autoincrement())
+  title  String // For example, "Home", "About Us", etc.
+  slug   String @unique // A URL-friendly identifier.
+  config Json? // Additional page-level settings (e.g. metadata, layout options).
+
+  // Optionally, a page may override the store’s theme.
+  themeId Int?
+  theme   Theme? @relation(fields: [themeId], references: [id])
+
+  // A page is composed of one or more sections.
+  sections    Section[]
+  PageVersion PageVersion[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageVersion {
+  id          Int      @id @default(autoincrement())
+  pageId      Int
+  page        Page     @relation(fields: [pageId], references: [id])
+  version     Int // Version number (e.g., 1 for first draft, 2 for an update)
+  config      Json? // Snapshot of the page layout and settings
+  sections    Json? // Stores a JSON snapshot of the sections and their content
+  isPublished Boolean  @default(false) // Determines if this version is live
+  createdAt   DateTime @default(now())
+
+  @@unique([pageId, version]) // Ensure unique version per page
+}
+
+model Section {
+  id     Int   @id @default(autoincrement())
+  pageId Int?
+  page   Page? @relation(fields: [pageId], references: [id])
+
+  type  String // The type of section (for example: "hero", "featured-products", "testimonial", etc.)
+  title String? // An optional title for the section.
+  order Int // Used to sort the sections when rendering the page.
+
+  isGlobal Boolean @default(false) // TRUE if this is a global section
+
+  // JSON-based fields allow you to store any styling or content data you need.
+  config  Json? // Custom styling and layout settings (e.g., fonts, colors, padding).
+  content Json? // The dynamic content for the section (e.g., text, images, etc.).
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([pageId, order]) // Improve query performance for section ordering
 }
 
 model Log {

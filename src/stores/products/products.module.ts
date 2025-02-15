@@ -7,12 +7,12 @@ import { PrismaDynamicService } from '../../prisma/prisma.service';
 import { PrismaCentralService } from 'src/prisma/prisma-central.service';
 
 @Module({
-imports: [
+  imports: [
     JwtModule.register({
         secret: process.env.JWT_SECRET , // Ensure this is the same secret as in AuthModule
-        signOptions: { expiresIn: '10h' }, // Token expiry, ensure consistency
+        signOptions: { expiresIn: '7d' }, // Token expiry, ensure consistency
     }),
-    ],
+  ],
   providers: [ProductsService, PrismaDynamicService, PrismaCentralService, AdminGuard],
   controllers: [ProductsController],
 })
