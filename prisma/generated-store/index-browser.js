@@ -325,6 +325,7 @@ exports.Prisma.PageVersionScalarFieldEnum = {
 exports.Prisma.SectionScalarFieldEnum = {
   id: 'id',
   pageId: 'pageId',
+  themeId: 'themeId',
   type: 'type',
   title: 'title',
   order: 'order',
@@ -333,6 +334,13 @@ exports.Prisma.SectionScalarFieldEnum = {
   content: 'content',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PageSectionScalarFieldEnum = {
+  id: 'id',
+  pageId: 'pageId',
+  sectionId: 'sectionId',
+  order: 'order'
 };
 
 exports.Prisma.LogScalarFieldEnum = {
@@ -420,6 +428,7 @@ exports.Prisma.ModelName = {
   Page: 'Page',
   PageVersion: 'PageVersion',
   Section: 'Section',
+  PageSection: 'PageSection',
   Log: 'Log'
 };
 

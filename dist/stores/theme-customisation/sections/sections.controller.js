@@ -17,64 +17,87 @@ const common_1 = require("@nestjs/common");
 const sections_service_1 = require("./sections.service");
 const create_section_dto_1 = require("./dtos/create-section.dto");
 const update_section_dto_1 = require("./dtos/update-section.dto");
+const admin_guard_1 = require("../../guards/admin.guard");
 let SectionsController = class SectionsController {
     constructor(sectionsService) {
         this.sectionsService = sectionsService;
     }
-    create(createSectionDto) {
-        return this.sectionsService.create(createSectionDto);
+    async create(request, createSectionDto) {
+        return this.sectionsService.create(request['storeDbUrl'], request['storeId'], createSectionDto);
     }
-    findAll() {
-        return this.sectionsService.findAll();
+    async findAll(request) {
+        return this.sectionsService.findAll(request['storeDbUrl']);
     }
-    findOne(id) {
-        return this.sectionsService.findOne(+id);
+    async findByTheme(request, themeId) {
+        return this.sectionsService.findByTheme(request['storeDbUrl'], Number(themeId));
     }
-    update(id, updateSectionDto) {
-        return this.sectionsService.update(+id, updateSectionDto);
+    async findByPage(request, pageId) {
+        return this.sectionsService.findByPage(request['storeDbUrl'], Number(pageId));
     }
-    remove(id) {
-        return this.sectionsService.remove(+id);
+    async update(request, id, updateSectionDto) {
+        return this.sectionsService.update(request['storeDbUrl'], Number(id), updateSectionDto);
+    }
+    async delete(request, id) {
+        return this.sectionsService.delete(request['storeDbUrl'], Number(id));
     }
 };
 exports.SectionsController = SectionsController;
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_section_dto_1.CreateSectionDto]),
-    __metadata("design:returntype", void 0)
-], SectionsController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], SectionsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], SectionsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Post)('create'),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_section_dto_1.UpdateSectionDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [Object, create_section_dto_1.CreateSectionDto]),
+    __metadata("design:returntype", Promise)
+], SectionsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)('all'),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], SectionsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('theme/:themeId'),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('themeId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], SectionsController.prototype, "findByTheme", null);
+__decorate([
+    (0, common_1.Get)('page/:pageId'),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('pageId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], SectionsController.prototype, "findByPage", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id')),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, update_section_dto_1.UpdateSectionDto]),
+    __metadata("design:returntype", Promise)
 ], SectionsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], SectionsController.prototype, "remove", null);
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], SectionsController.prototype, "delete", null);
 exports.SectionsController = SectionsController = __decorate([
-    (0, common_1.Controller)('sections'),
+    (0, common_1.Controller)('/store/sections'),
     __metadata("design:paramtypes", [sections_service_1.SectionsService])
 ], SectionsController);
 //# sourceMappingURL=sections.controller.js.map

@@ -10,13 +10,22 @@ exports.SectionsModule = void 0;
 const common_1 = require("@nestjs/common");
 const sections_service_1 = require("./sections.service");
 const sections_controller_1 = require("./sections.controller");
+const prisma_service_1 = require("../../../prisma/prisma.service");
+const prisma_central_service_1 = require("../../../prisma/prisma-central.service");
+const jwt_1 = require("@nestjs/jwt");
 let SectionsModule = class SectionsModule {
 };
 exports.SectionsModule = SectionsModule;
 exports.SectionsModule = SectionsModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            jwt_1.JwtModule.register({
+                secret: process.env.JWT_SECRET,
+                signOptions: { expiresIn: '7d' },
+            }),
+        ],
+        providers: [sections_service_1.SectionsService, prisma_service_1.PrismaDynamicService, prisma_central_service_1.PrismaCentralService],
         controllers: [sections_controller_1.SectionsController],
-        providers: [sections_service_1.SectionsService],
     })
 ], SectionsModule);
 //# sourceMappingURL=sections.module.js.map

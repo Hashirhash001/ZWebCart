@@ -239,6 +239,7 @@ model Theme {
 
   ThemeVersion ThemeVersion[]
   pages        Page[]
+  section      Section[]
 }
 
 model ThemeVersion {
@@ -267,8 +268,9 @@ model Page {
   sections    Section[]
   PageVersion PageVersion[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PageSection PageSection[]
 }
 
 model PageVersion {
@@ -289,6 +291,9 @@ model Section {
   pageId Int?
   page   Page? @relation(fields: [pageId], references: [id])
 
+  themeId Int?
+  theme   Theme? @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
   type  String // The type of section (for example: "hero", "featured-products", "testimonial", etc.)
   title String? // An optional title for the section.
   order Int // Used to sort the sections when rendering the page.
@@ -299,10 +304,22 @@ model Section {
   config  Json? // Custom styling and layout settings (e.g., fonts, colors, padding).
   content Json? // The dynamic content for the section (e.g., text, images, etc.).
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PageSection PageSection[]
 
   @@index([pageId, order]) // Improve query performance for section ordering
+}
+
+model PageSection {
+  id        Int     @id @default(autoincrement())
+  pageId    Int
+  sectionId Int
+  page      Page    @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  order     Int // Order of the section within the page
+
+  @@unique([pageId, sectionId]) // Ensures no duplicate section assignments
 }
 
 model Log {
