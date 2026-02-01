@@ -22,64 +22,53 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Zwebcart Backend (NestJS + Prisma + PostgreSQL)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A modular backend API built with NestJS, Prisma, and PostgreSQL to power a customizable multi-store eCommerce platform (stores, products, cart, orders, wishlist) with theme/page/section customization support.
 
-## Project setup
+## Tech Stack
+- Backend: NestJS (TypeScript)
+- Database: PostgreSQL
+- ORM: Prisma
+- Auth: Store auth + Google Auth (if enabled)
 
-```bash
-$ yarn install
-```
+## Key Modules / Features
+- Multi-store architecture (store-level authentication & access)
+- Products & categories APIs
+- Cart APIs
+- Orders APIs
+- Wishlist APIs
+- Theme customization
+  - Themes
+  - Pages
+  - Sections (add/update sections within pages)
+- Guards for role/store-based access (admin/frontStore/store guards)
+- Central module utilities (shared helpers/services)
 
-## Compile and run the project
+## Folder Structure (High level)
+- `src/stores/*` : store-related modules (auth, products, cart, order, wishlist, theme-customisation)
+- `src/central/*`: central/common modules (e.g., google-auth)
+- `prisma/` : Prisma schema and migrations
 
-```bash
-# development
-$ yarn run start
+## Requirements
+- Node.js (LTS recommended)
+- PostgreSQL
+- npm / yarn / pnpm
 
-# watch mode
-$ yarn run start:dev
+## Environment Variables
+Create a `.env` file in the project root:
 
-# production mode
-$ yarn run start:prod
-```
+```env
+# Database
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DB_NAME?schema=public"
 
-## Run tests
+# App
+PORT=3000
 
-```bash
-# unit tests
-$ yarn run test
+# Auth (if used)
+JWT_SECRET="change_me"
 
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Google OAuth
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GOOGLE_CALLBACK_URL=""
