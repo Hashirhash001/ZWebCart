@@ -98,12 +98,12 @@ npm run build
 
 Import the Postman collection to test all available APIs:
 
-- **Collection:** [Z CART Postman Collection](./docs/postman/Z CART.postman_collection.json)
+- **Collection:** [Z CART Postman Collection](./docs/postman/Z-CART.postman_collection.json)
 
 ### How to Import
 1. Open Postman
 2. Click **Import** → **File**
-3. Select `./docs/postman/Z_CART.postman_collection.json`
+3. Select `./docs/postman/Z-CART.postman_collection.json`
 4. Configure environment variables (JWT token, store ID, etc.) in Postman as needed
 
 The collection includes requests for:
