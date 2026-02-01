@@ -32,7 +32,7 @@ It uses a **central database** to manage stores and resolves each store’s own 
 - Database: PostgreSQL
 - ORM: Prisma
 - Auth: JWT (Guards)
-- Validation: DTOs + ValidationPipe (recommended) [web:195]
+- Validation: DTOs + ValidationPipe
 
 ## Architecture (High Level)
 - **Central DB**: stores metadata about stores (including encrypted `dbUrl`).
@@ -41,7 +41,7 @@ It uses a **central database** to manage stores and resolves each store’s own 
 
 ## Modules / Features
 - Store authentication (`src/store-auth`)
-- Google authentication (`src/central/google-auth`) (optional)
+- Google authentication (`src/central/google-auth`)
 - Store modules (`src/stores/*`):
   - Products
   - Category
@@ -50,11 +50,11 @@ It uses a **central database** to manage stores and resolves each store’s own 
   - Wishlist
   - Theme customisation (themes, pages, sections)
 - Guards for protected routes (admin/frontStore/store)
-- DTO-driven request contracts (per-module `dtos/`) [web:195]
+- DTO-driven request contracts (per-module `dtos/`)
 
 ## DTOs & Validation
 - Each module contains `dtos/` that define request payloads (create/update DTOs).
-- DTOs can be validated using NestJS `ValidationPipe` (commonly used to validate and sanitize incoming requests). [web:188]
+- DTOs can be validated using NestJS `ValidationPipe` (commonly used to validate and sanitize incoming requests).
 
 ## Folder Structure
 - `src/central/*` : central modules (e.g., google auth, shared utilities)
@@ -71,6 +71,45 @@ It uses a **central database** to manage stores and resolves each store’s own 
 - Node.js (LTS recommended)
 - PostgreSQL
 - npm / yarn / pnpm
+
+## Quick Setup (Local)
+- Clone the repo
+- Configure `.env`
+- Run migrations
+- Start the server
+
+## Generate Prisma clients
+# Central client
+npx prisma generate --schema=./prisma/central-schema.prisma
+
+# Store client
+npx prisma generate --schema=./prisma/schema.prisma
+
+# Migrations
+## Development
+npx prisma migrate dev --schema=./prisma/central-schema.prisma
+npx prisma migrate dev --schema=./prisma/schema.prisma
+
+# Run
+npm run start:dev
+npm run build
+
+## API Reference (Postman)
+
+Import the Postman collection to test all available APIs:
+
+- **Collection:** [Z CART Postman Collection](./docs/postman/Z_CART.postman_collection.json)
+
+### How to Import
+1. Open Postman
+2. Click **Import** → **File**
+3. Select `./docs/postman/Z_CART.postman_collection.json`
+4. Configure environment variables (JWT token, store ID, etc.) in Postman as needed
+
+The collection includes requests for:
+- Store authentication & Google Auth
+- Products, Categories, Cart, Orders, Wishlist
+- Theme customisation (themes, pages, sections)
 
 ## Environment Variables
 Create `.env` in the project root:
@@ -94,3 +133,4 @@ CRYPTO_SECRET_KEY="change_me"
 GOOGLE_CLIENT_ID=""
 GOOGLE_CLIENT_SECRET=""
 GOOGLE_CALLBACK_URL=""
+
