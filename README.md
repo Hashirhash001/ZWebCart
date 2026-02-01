@@ -22,33 +22,50 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-# Zwebcart Backend (NestJS + Prisma + PostgreSQL)
+# No Code Website Builder Backend (NestJS + Prisma + PostgreSQL)
 
-A modular backend API built with NestJS, Prisma, and PostgreSQL to power a customizable multi-store eCommerce platform (stores, products, cart, orders, wishlist) with theme/page/section customization support.
+A modular NestJS backend for a customizable **multi-store** commerce platform.
+It uses a **central database** to manage stores and resolves each store’s own database connection dynamically (store DB URL is stored encrypted and decrypted at runtime).
 
 ## Tech Stack
 - Backend: NestJS (TypeScript)
 - Database: PostgreSQL
 - ORM: Prisma
-- Auth: Store auth + Google Auth (if enabled)
+- Auth: JWT (Guards)
+- Validation: DTOs + ValidationPipe (recommended) [web:195]
 
-## Key Modules / Features
-- Multi-store architecture (store-level authentication & access)
-- Products & categories APIs
-- Cart APIs
-- Orders APIs
-- Wishlist APIs
-- Theme customization
-  - Themes
-  - Pages
-  - Sections (add/update sections within pages)
-- Guards for role/store-based access (admin/frontStore/store guards)
-- Central module utilities (shared helpers/services)
+## Architecture (High Level)
+- **Central DB**: stores metadata about stores (including encrypted `dbUrl`).
+- **Store DB**: each store can have its own database (resolved using `storeId` in JWT).
+- **Guards**: decode JWT, validate token, resolve `storeId`, fetch store from central DB, decrypt store DB URL, and attach `storeId` + `storeDbUrl` to the request.
 
-## Folder Structure (High level)
-- `src/stores/*` : store-related modules (auth, products, cart, order, wishlist, theme-customisation)
-- `src/central/*`: central/common modules (e.g., google-auth)
-- `prisma/` : Prisma schema and migrations
+## Modules / Features
+- Store authentication (`src/store-auth`)
+- Google authentication (`src/central/google-auth`) (optional)
+- Store modules (`src/stores/*`):
+  - Products
+  - Category
+  - Cart
+  - Order
+  - Wishlist
+  - Theme customisation (themes, pages, sections)
+- Guards for protected routes (admin/frontStore/store)
+- DTO-driven request contracts (per-module `dtos/`) [web:195]
+
+## DTOs & Validation
+- Each module contains `dtos/` that define request payloads (create/update DTOs).
+- DTOs can be validated using NestJS `ValidationPipe` (commonly used to validate and sanitize incoming requests). [web:188]
+
+## Folder Structure
+- `src/central/*` : central modules (e.g., google auth, shared utilities)
+- `src/stores/*` : store modules (auth, products, cart, order, wishlist, theme-customisation)
+- `src/guards/*` : guards (admin/frontStore/store)
+- `prisma/` : schemas, migrations, generated clients
+  - `central-schema.prisma`
+  - `schema.prisma` (store schema)
+  - `migrations/`
+  - `generated-central/`
+  - `generated-store/`
 
 ## Requirements
 - Node.js (LTS recommended)
@@ -56,19 +73,24 @@ A modular backend API built with NestJS, Prisma, and PostgreSQL to power a custo
 - npm / yarn / pnpm
 
 ## Environment Variables
-Create a `.env` file in the project root:
+Create `.env` in the project root:
 
 ```env
-# Database
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DB_NAME?schema=public"
-
 # App
 PORT=3000
+NODE_ENV=development
 
-# Auth (if used)
+# JWT
 JWT_SECRET="change_me"
+JWT_EXPIRES_IN="7d"
 
-# Google OAuth
+# Central DB (used by PrismaCentralService)
+CENTRAL_DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/CENTRAL_DB?schema=public"
+
+# Crypto (used to encrypt/decrypt store dbUrl)
+CRYPTO_SECRET_KEY="change_me"
+
+# Google OAuth (optional)
 GOOGLE_CLIENT_ID=""
 GOOGLE_CLIENT_SECRET=""
 GOOGLE_CALLBACK_URL=""
