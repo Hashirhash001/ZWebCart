@@ -98,7 +98,7 @@ npm run build
 
 Import the Postman collection to test all available APIs:
 
-- **Collection:** [Z CART Postman Collection](./docs/postman/Z_CART.postman_collection.json)
+- **Collection:** [Z CART Postman Collection](./docs/postman/Z CART.postman_collection.json)
 
 ### How to Import
 1. Open Postman
